@@ -1,26 +1,56 @@
+set nocompatible
 filetype off
 
-if has('win32') || has('win64')
-    let $DOTVIM = expand('~/vimfiles')
-else
-    let $DOTVIM = expand('~/.vim')
-endif
-
 if has('vim_starting')
-	set runtimepath+=$DOTVIM/bundle/neobundle.vim/
-	call neobundle#rc(expand('~/vimfiles/bundle/'))
+	set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
-NeoBundle 'https://github.com/Shougo/neobundle.vim.git'
+"bundle
+call neobundle#rc(expand('~/.vim/bundle/'))
+
+NeoBundle 'neobundle.vim.git'
 NeoBundle 'https://github.com/Shougo/unite.vim.git'
 NeoBundle 'https://github.com/Shougo/neocomplcache.git'
+NeoBundle 'https://github.com/Shougo/vimshell.git'
+NeoBundle 'https://github.com/Shougo/vimfiler.git'
+NeoBundle 'https://github.com/Shougo/vimproc.git'
 NeoBundle 'https://github.com/scrooloose/syntastic.git'
 NeoBundle 'https://github.com/pangloss/vim-javascript.git'
+NeoBundle 'https://github.com/tyru/open-browser.vim.git'
+NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+NeoBundle 'https://github.com/mattn/zencoding-vim.git'
+NeoBundle 'https://github.com/scrooloose/nerdtree.git'
+NeoBundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
 
 filetype plugin indent on
 
+"check bundle
+if neobundle#exists_not_installed_bundles()
+	echomsg 'Not installed bundles:' . string(neobundle#get_not_installed_bundle_names())
+	echomsg 'Please execute "NeoBundleInstall"'
+endif
+
+if has('gui_macvim')
+	set showtabline=2
+	set guifont=Monaco:h11
+	set transparency=10
+endif
+
+"fullscreen
+if has('gui_running')
+	set fuoptions=maxvert,maxhorz
+	au GUIEnter * set fullscreen
+endif
+
 "show line number
 set number
+
+"chabge Cursor color
+highlight Cursor guifg=white guibg=skyblue
+highlight iCursor guifg=white guibg=steelblue
+set guicursor=n-v-c:block-Cursor
+set guicursor+=i:ver100-iCursor
+set guicursor+=i:blinkwait10
 
 "入力モード時、ステータスラインのカラーを変更
 augroup InsertHook
@@ -48,8 +78,6 @@ set write
 
 set noexpandtab
 
-
-"
 set showcmd
 set cmdheight=1
 
@@ -64,6 +92,8 @@ set title
 " highlightサーチをEsc2回で消去
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
+" copy & paste
+set clipboard=unnamed
 
 "タブ幅をリセット
 au BufNewFile,BufRead * set tabstop=4 shiftwidth=4
@@ -78,6 +108,7 @@ au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 "for CSS3 syntax
 " au BufRead,BufNewFile *.css set ft=css syntax=css3 
+
 
 "for JSON syntax
 au! BufRead,BufNewFile *.json setfiletype json 
@@ -218,3 +249,50 @@ function! s:unite_my_settings()"{{{
 endfunction"}}}
 
 
+"vimfiler
+":let g:vimfiler_as_default_explorer = 1
+nnoremap <F2> :VimFiler -buffer-name=explorer -split -winwidth=45 -toggle -no-quit<Cr>
+autocmd! FileType vimfiler call g:my_vimfiler_settings()
+function! g:my_vimfiler_settings()
+  nmap     <buffer><expr><Cr> vimfiler#smart_cursor_map("\<Plug>(vimfiler_expand_tree)", "\<Plug>(vimfiler_edit_file)")
+  nnoremap <buffer>s          :call vimfiler#mappings#do_action('my_split')<Cr>
+  nnoremap <buffer>v          :call vimfiler#mappings#do_action('my_vsplit')<Cr>
+endfunction
+
+let my_action = { 'is_selectable' : 1 }
+function! my_action.func(candidates)
+  wincmd p
+  exec 'split '. a:candidates[0].action__path
+endfunction
+call unite#custom_action('file', 'my_split', my_action)
+
+let my_action = { 'is_selectable' : 1 }                     
+function! my_action.func(candidates)
+  wincmd p
+  exec 'vsplit '. a:candidates[0].action__path
+endfunction
+call unite#custom_action('file', 'my_vsplit', my_action)
+
+
+"syntastic 
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+let g:syntastic_javascript_checker='jshint'
+let g:syntastic_mode_map = {
+      \  'mode': 'active',
+      \ 'active_filetypes': ['ruby', 'javascript'],
+      \ 'passive_filetypes': []
+      \ }
+
+
+"open browser
+let g:netrw_nogx = 1 " disable netrw's gx mapping.
+nmap gx <Plug>(openbrowser-smart-search)
+vmap gx <Plug>(openbrowser-smart-search)
+
+"css color
+let g:cssColorVimDoNotMessMyUpdatetime = 1
+
+
+" nerdtree
+autocmd vimenter * NERDTree
