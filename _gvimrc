@@ -12,7 +12,12 @@ set transparency=250
 
 "color sheme
 "colorscheme slate
-colorscheme desert
+"colorscheme desert
+colorscheme wombat
+
+"highlight line
+set cursorline
+hi CursorLine term=bold cterm=bold guibg=Grey40
 
 set list
 set listchars=tab:>-,extends:^,precedes:^

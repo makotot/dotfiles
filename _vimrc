@@ -1,28 +1,32 @@
+set nocompatible
 filetype off
 
-if has('win32') || has('win64')
-    let $DOTVIM = expand('~/vimfiles')
-else
-    let $DOTVIM = expand('~/.vim')
-endif
+set rtp+=~/.vim/bundle/vundle/
 
 if has('vim_starting')
-	set runtimepath+=$DOTVIM/bundle/neobundle.vim/
-	call neobundle#rc(expand('~/vimfiles/bundle/'))
+	call vundle#rc()
 endif
 
-NeoBundle 'https://github.com/Shougo/neobundle.vim.git'
-NeoBundle 'https://github.com/Shougo/unite.vim.git'
-NeoBundle 'https://github.com/Shougo/neocomplcache.git'
-NeoBundle 'https://github.com/scrooloose/syntastic.git'
-NeoBundle 'https://github.com/pangloss/vim-javascript.git'
+Bundle 'gmarik/vundle'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/syntastic'
+Bundle 'pangloss/vim-javascript'
+Bundle 'lepture/vim-css'
+Bundle 'wavded/vim-stylus'
+Bundle 'Shougo/unite.vim'
+Bundle 'Shougo/neocomplcache'
+Bundle 'ujihisa/unite-colorscheme'
 
 filetype plugin indent on
 
 "show line number
 set number
 
-"å…¥åŠ›ãƒ¢ãƒ¼ãƒ‰æ™‚ã€ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ãƒ©ã‚¤ãƒ³ã®ã‚«ãƒ©ãƒ¼ã‚’å¤‰æ›´
+
+
+
+
+"“ü—Íƒ‚[ƒhAƒXƒe[ƒ^ƒXƒ‰ƒCƒ“‚ÌƒJƒ‰[‚ğ•ÏX
 augroup InsertHook
 autocmd!
 autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
@@ -32,7 +36,7 @@ augroup END
 au   BufEnter *   execute ":lcd " . expand("%:p:h")
 
 
-"ãƒãƒ¼ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ã®<C-^>ã‚’ç„¡åŠ¹åŒ–
+"ƒm[ƒ}ƒ‹ƒ‚[ƒh‚Ì<C-^>‚ğ–³Œø‰»
 nnoremap <silent> <C-^> <Nop>
 
 "no backup swp
@@ -53,22 +57,23 @@ set noexpandtab
 set showcmd
 set cmdheight=1
 
-"ãƒãƒƒãƒ•ã‚¡é–¢é€£
-"ç·¨é›†ä¸­ã§ã‚‚ãƒãƒƒãƒ•ã‚¡ã‚’åˆ‡ã‚Šæ›¿ãˆã‚Œã‚‹ã‚ˆã†ã«ã—ã¦ãŠã
+"ƒoƒbƒtƒ@ŠÖ˜A
+"•ÒW’†‚Å‚àƒoƒbƒtƒ@‚ğØ‚è‘Ö‚¦‚ê‚é‚æ‚¤‚É‚µ‚Ä‚¨‚­
 set hidden
 
-"ãƒ«ãƒ¼ãƒ©ãƒ¼ã‚’è¡¨ç¤º
+"ƒ‹[ƒ‰[‚ğ•\¦
 set ruler
 set title
 
-" highlightã‚µãƒ¼ãƒã‚’Esc2å›ã§æ¶ˆå»
+
+" highlightƒT[ƒ`‚ğEsc2‰ñ‚ÅÁ‹
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 
-"ã‚¿ãƒ–å¹…ã‚’ãƒªã‚»ãƒƒãƒˆ
+"ƒ^ƒu•‚ğƒŠƒZƒbƒg
 au BufNewFile,BufRead * set tabstop=4 shiftwidth=4
 
-".rhtmlã¨.rbã¨.ymlã§ã‚¿ãƒ–å¹…ã‚’å¤‰æ›´
+".rhtml‚Æ.rb‚Æ.yml‚Åƒ^ƒu•‚ğ•ÏX
 au BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
@@ -76,8 +81,6 @@ au BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
 "for jquery syntax
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
-"for CSS3 syntax
-" au BufRead,BufNewFile *.css set ft=css syntax=css3 
 
 "for JSON syntax
 au! BufRead,BufNewFile *.json setfiletype json 
@@ -86,14 +89,14 @@ au! BufRead,BufNewFile *.json setfiletype json
 autocmd BufNewFile,BufRead *.{md,mkd,mkdn,mark*} set filetype=markdown
 au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
-" .pyã§ã‚¿ãƒ–å¹…ã‚’å¤‰æ›´ãƒ»ã‚¹ãƒšãƒ¼ã‚¹ã§ã‚¤ãƒ³ãƒ‡ãƒ³ãƒˆã«å¤‰æ›´
+" .py‚Åƒ^ƒu•‚ğ•ÏXEƒXƒy[ƒX‚ÅƒCƒ“ƒfƒ“ƒg‚É•ÏX
 au BufNewFile,BufRead *.py setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 "javascript tab
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 au BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4
 
-" ã‚³ãƒ¼ãƒ‡ã‚£ãƒ³ã‚°ã‚¹ã‚¿ã‚¤ãƒ«åˆ‡ã‚Šæ›¿ãˆ
+" ƒR[ƒfƒBƒ“ƒOƒXƒ^ƒCƒ‹Ø‚è‘Ö‚¦
 let s:coding_styles = {}
 let s:coding_styles['Default'] = 'setl tabstop=4 shiftwidth=4 shiftwidth=4 softtabstop=4 noexpandtab'
 let s:coding_styles['ShortExpandStyle'] = 'setl tabstop=2 shiftwidth=2 shiftwidth=2 softtabstop=2 expandtab'
@@ -107,14 +110,10 @@ function! s:coding_style_complete(...) "{{{
 	return keys(s:coding_styles)
 endfunction "}}}
 
-" HTML Tidy
-autocmd FileType html :compiler tidy
-autocmd FileType html :setlocal makeprg=tidy\ -raw\ -quiet\ -errors\ --gnu-emacs\ yes\ \"%\" 
-autocmd FileType xhtml :compiler tidy
-autocmd FileType xhtml :setlocal makeprg=tidy\ -raw\ -quiet\ -errors\ --gnu-emacs\ yes\ \"%\" 
 
-" CSS tidy
-"autocmd FileType css :compiler css
+"NERDTree
+autocmd vimenter * NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 "plugin key-mappings
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
@@ -174,47 +173,46 @@ nnoremap [unite] <Nop>
 nmap <Space>f [unite]
  
 "unite general settings
-"ã‚¤ãƒ³ã‚µãƒ¼ãƒˆãƒ¢ãƒ¼ãƒ‰ã§é–‹å§‹
+"ƒCƒ“ƒT[ƒgƒ‚[ƒh‚ÅŠJn
 let g:unite_enable_start_insert = 1
-"æœ€è¿‘é–‹ã„ãŸãƒ•ã‚¡ã‚¤ãƒ«å±¥æ­´ã®ä¿å­˜æ•°
+"Å‹ßŠJ‚¢‚½ƒtƒ@ƒCƒ‹—š—ğ‚Ì•Û‘¶”
 let g:unite_source_file_mru_limit = 50
  
-"file_mruã®è¡¨ç¤ºãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã‚’æŒ‡å®šã€‚ç©ºã«ã™ã‚‹ã¨è¡¨ç¤ºã‚¹ãƒ”ãƒ¼ãƒ‰ãŒé«˜é€ŸåŒ–ã•ã‚Œã‚‹
+"file_mru‚Ì•\¦ƒtƒH[ƒ}ƒbƒg‚ğw’èB‹ó‚É‚·‚é‚Æ•\¦ƒXƒs[ƒh‚ª‚‘¬‰»‚³‚ê‚é
 let g:unite_source_file_mru_filename_format = ''
  
-"ç¾åœ¨é–‹ã„ã¦ã„ã‚‹ãƒ•ã‚¡ã‚¤ãƒ«ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªä¸‹ã®ãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§ã€‚
-"é–‹ã„ã¦ã„ãªã„å ´åˆã¯ã‚«ãƒ¬ãƒ³ãƒˆãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª
+"Œ»İŠJ‚¢‚Ä‚¢‚éƒtƒ@ƒCƒ‹‚ÌƒfƒBƒŒƒNƒgƒŠ‰º‚Ìƒtƒ@ƒCƒ‹ˆê——B
+"ŠJ‚¢‚Ä‚¢‚È‚¢ê‡‚ÍƒJƒŒƒ“ƒgƒfƒBƒŒƒNƒgƒŠ
 noremap <C-U> :Unite -buffer-name=file file<CR>
 "nnoremap <silent> [unite]f :<C-u>UniteWithBufferDir -buffer-name=files file<CR>
-"ãƒãƒƒãƒ•ã‚¡ä¸€è¦§
+"ƒoƒbƒtƒ@ˆê——
 noremap <C-B> :Unite buffer<CR>
 "nnoremap <silent> [unite]b :<C-u>Unite buffer<CR>
-"ãƒ¬ã‚¸ã‚¹ã‚¿ä¸€è¦§
+"ƒŒƒWƒXƒ^ˆê——
 nnoremap <silent> [unite]r :<C-u>Unite -buffer-name=register register<CR>
-"æœ€è¿‘ä½¿ç”¨ã—ãŸãƒ•ã‚¡ã‚¤ãƒ«ä¸€è¦§
+"Å‹ßg—p‚µ‚½ƒtƒ@ƒCƒ‹ˆê——
 nnoremap <silent> [unite]m :<C-u>Unite file_mru<CR>
-"ãƒ–ãƒƒã‚¯ãƒãƒ¼ã‚¯ä¸€è¦§
+"ƒuƒbƒNƒ}[ƒNˆê——
 nnoremap <silent> [unite]c :<C-u>Unite bookmark<CR>
-"ãƒ–ãƒƒã‚¯ãƒãƒ¼ã‚¯ã«è¿½åŠ 
+"ƒuƒbƒNƒ}[ƒN‚É’Ç‰Á
 nnoremap <silent> [unite]a :<C-u>UniteBookmarkAdd<CR>
-"uniteã‚’é–‹ã„ã¦ã„ã‚‹é–“ã®ã‚­ãƒ¼ãƒãƒƒãƒ”ãƒ³ã‚°
+"unite‚ğŠJ‚¢‚Ä‚¢‚éŠÔ‚ÌƒL[ƒ}ƒbƒsƒ“ƒO
 autocmd FileType unite call s:unite_my_settings()
 function! s:unite_my_settings()"{{{
-  "ESCã§uniteã‚’çµ‚äº†
+  "ESC‚Åunite‚ğI—¹
   nmap <buffer> <ESC> <Plug>(unite_exit)
-  "å…¥åŠ›ãƒ¢ãƒ¼ãƒ‰ã®ã¨ãjjã§ãƒãƒ¼ãƒãƒ«ãƒ¢ãƒ¼ãƒ‰ã«ç§»å‹•
+  "“ü—Íƒ‚[ƒh‚Ì‚Æ‚«jj‚Åƒm[ƒ}ƒ‹ƒ‚[ƒh‚ÉˆÚ“®
   imap <buffer> jj <Plug>(unite_insert_leave)
-  "å…¥åŠ›ãƒ¢ãƒ¼ãƒ‰ã®ã¨ãctrl+wã§ãƒãƒƒã‚¯ã‚¹ãƒ©ãƒƒã‚·ãƒ¥ã‚‚å‰Šé™¤
+  "“ü—Íƒ‚[ƒh‚Ì‚Æ‚«ctrl+w‚ÅƒoƒbƒNƒXƒ‰ƒbƒVƒ…‚àíœ
   imap <buffer> <C-w> <Plug>(unite_delete_backward_path)
-  "ctrl+jã§ç¸¦ã«åˆ†å‰²ã—ã¦é–‹ã
+  "ctrl+j‚Åc‚É•ªŠ„‚µ‚ÄŠJ‚­
   nnoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
   inoremap <silent> <buffer> <expr> <C-j> unite#do_action('split')
-  "ctrl+jã§æ¨ªã«åˆ†å‰²ã—ã¦é–‹ã
+  "ctrl+j‚Å‰¡‚É•ªŠ„‚µ‚ÄŠJ‚­
   nnoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
   inoremap <silent> <buffer> <expr> <C-l> unite#do_action('vsplit')
-  "ctrl+oã§ãã®å ´æ‰€ã«é–‹ã
+  "ctrl+o‚Å‚»‚ÌêŠ‚ÉŠJ‚­
   nnoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
   inoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
 endfunction"}}}
-
 
