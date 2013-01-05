@@ -22,6 +22,7 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
+Bundle 'goatslacker/mango.vim'
 
 filetype plugin indent on
 

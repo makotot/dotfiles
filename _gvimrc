@@ -15,6 +15,11 @@ set transparency=250
 "colorscheme desert
 colorscheme wombat
 
+" syntax highlighting
+set background=dark     " you can use `dark` or `light` as your background
+syntax on
+color mango
+
 "highlight line
 set cursorline
 hi CursorLine term=bold cterm=bold guibg=Grey20
