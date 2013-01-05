@@ -15,14 +15,15 @@ Bundle 'lepture/vim-css'
 Bundle 'wavded/vim-stylus'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neocomplcache'
+Bundle 'Shougo/neosnippet'
 Bundle 'ujihisa/unite-colorscheme'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'mattn/zencoding-vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'Lokaltog/vim-easymotion'
 
 filetype plugin indent on
-
 
 set shell=bash
 
@@ -114,6 +115,18 @@ function! s:coding_style_complete(...) "{{{
 	return keys(s:coding_styles)
 endfunction "}}}
 
+au FileType javascript set ts=4 sw=4 noexpandtab
+au BufNewFile *.js set ft=javascript fenc=utf-8
+
+set laststatus=2
+set statusline=%<%f\ %m%r
+set statusline+=[%{&fenc!=''?&fenc:&enc}][%{&ff}]
+set statusline+=%l:%L
+
+set cmdheight=1
+
+au FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
+
 
 "NERDTree
 autocmd vimenter * NERDTree
@@ -152,23 +165,24 @@ inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 
 
-"jslint.vim
-"autocmd FileType javascript call s:javascript_filetype_settings()
-"function! s:javascript_filetype_settings()
-"	autocmd BufLeave     <buffer> call jslint#clear()
-"	autocmd BufWritePost <buffer> call jslint#check()
-"	autocmd CursorMoved  <buffer> call jslint#message()
-"endfunction
+" SuperTab like snippets behavior.
+imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 
-au FileType javascript set ts=4 sw=4 noexpandtab
-au BufNewFile *.js set ft=javascript fenc=utf-8
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
-set laststatus=2
-set statusline=%<%f\ %m%r
-set statusline+=[%{&fenc!=''?&fenc:&enc}][%{&ff}]
-set statusline+=%l:%L
 
-set cmdheight=1
+"dictionary
+" js / including node
+let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_dictionary_filetype_lists = {
+  \ 'default' : '',
+  \  'css' : $HOME . '/.vim/dict/css.dict',
+  \ 'javascript' : $HOME . '/.vim/dict/javascript.dict',
+  \ }
 
 
 " unite.vim
@@ -220,3 +234,6 @@ function! s:unite_my_settings()"{{{
   inoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
 endfunction"}}}
 
+
+"easymotion
+let g:EasyMotion_leader_key = '<Leader>'
