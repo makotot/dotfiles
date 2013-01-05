@@ -17,7 +17,7 @@ colorscheme wombat
 
 "highlight line
 set cursorline
-hi CursorLine term=bold cterm=bold guibg=Grey40
+hi CursorLine term=bold cterm=bold guibg=Grey20
 
 set list
 set listchars=tab:>-,extends:^,precedes:^

@@ -16,14 +16,18 @@ Bundle 'wavded/vim-stylus'
 Bundle 'Shougo/unite.vim'
 Bundle 'Shougo/neocomplcache'
 Bundle 'ujihisa/unite-colorscheme'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'jistr/vim-nerdtree-tabs'
+Bundle 'mattn/zencoding-vim'
+Bundle 'tpope/vim-fugitive'
 
 filetype plugin indent on
 
+
+set shell=bash
+
 "show line number
 set number
-
-
-
 
 
 "入力モード時、ステータスラインのカラーを変更
