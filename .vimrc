@@ -8,19 +8,28 @@ endif
 "bundle
 call neobundle#rc(expand('~/.vim/bundle/'))
 
-NeoBundle 'neobundle.vim.git'
+NeoBundle 'https://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'https://github.com/Shougo/unite.vim.git'
 NeoBundle 'https://github.com/Shougo/neocomplcache.git'
+NeoBundle 'https://github.com/Shougo/neosnippet.git'
 NeoBundle 'https://github.com/Shougo/vimshell.git'
 NeoBundle 'https://github.com/Shougo/vimfiler.git'
 NeoBundle 'https://github.com/Shougo/vimproc.git'
 NeoBundle 'https://github.com/scrooloose/syntastic.git'
 NeoBundle 'https://github.com/pangloss/vim-javascript.git'
-NeoBundle 'https://github.com/tyru/open-browser.vim.git'
-NeoBundle 'https://github.com/tpope/vim-fugitive.git'
-NeoBundle 'https://github.com/mattn/zencoding-vim.git'
 NeoBundle 'https://github.com/scrooloose/nerdtree.git'
 NeoBundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
+NeoBundle 'https://github.com/tsaleh/vim-matchit.git'
+NeoBundle 'https://github.com/othree/html5.vim.git'
+NeoBundle 'https://github.com/groenewege/vim-less.git'
+NeoBundle 'https://github.com/bling/vim-airline.git'
+NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+NeoBundle 'https://github.com/mustache/vim-mode.git'
+NeoBundle 'https://github.com/kchmck/vim-coffee-script.git'
+NeoBundle 'https://github.com/cakebaker/scss-syntax.vim.git'
+NeoBundle 'https://github.com/othree/javascript-libraries-syntax.vim.git'
+NeoBundle 'https://github.com/elzr/vim-json.git'
+NeoBundle 'https://github.com/marijnh/tern_for_vim.git'
 
 filetype plugin indent on
 
@@ -32,8 +41,9 @@ endif
 
 if has('gui_macvim')
 	set showtabline=2
-	set guifont=Monaco:h11
-	set transparency=10
+	"set guifont=Monaco:h11
+	set guifont=Ricty:h12
+	set transparency=4
 endif
 
 "fullscreen
@@ -45,12 +55,23 @@ endif
 "show line number
 set number
 
+" listchars
+set list
+set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
+
+
+
+" encode
+set encoding=utf-8
+set fileencodings=utf8,cp932,sjis,euc-jp
+
 "chabge Cursor color
-highlight Cursor guifg=white guibg=skyblue
-highlight iCursor guifg=white guibg=steelblue
+"highlight Cursor guifg=white guibg=skyblue
+"highlight iCursor guifg=white guibg=skyBlue1
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set guicursor+=i:blinkwait10
+
 
 "入力モード時、ステータスラインのカラーを変更
 augroup InsertHook
@@ -61,6 +82,8 @@ augroup END
 
 au   BufEnter *   execute ":lcd " . expand("%:p:h")
 
+"search highlight
+set hlsearch
 
 "ノーマルモードの<C-^>を無効化
 nnoremap <silent> <C-^> <Nop>
@@ -121,8 +144,9 @@ au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} setlocal tabstop=2 shiftwidth=2 soft
 au BufNewFile,BufRead *.py setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 
 "javascript tab
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-au BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4
+"au BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4
+au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
+au BufNewFile *.js set ft=javascript fenc=utf-8
 
 " コーディングスタイル切り替え
 let s:coding_styles = {}
@@ -154,7 +178,7 @@ smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 "neocomplcache
 let g:neocomplcache_enable_at_startup = 1
 
-let g:neocomplcache_max_list = 5
+let g:neocomplcache_max_list = 7
 let g:neocomplcache_auto_completion_start_length = 2
 let g:neocomplcache_enable_smart_case = 1
 "" like AutoComplPop
@@ -178,25 +202,27 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
+"dictionary
+" js / including node
+let g:neocomplcache_dictionary_filetype_lists = {
+  \ 'default' : '',
+  \  'css' : $HOME . '/.vim/dict/css.dict',
+  \  'javascript' : $HOME . '/.vim/dict/javascript.dict',
+  \  'html' : $HOME . '/.vim/dict/html.dict'
+  \ }
+"enable omni
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+"autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
-"jslint.vim
-"autocmd FileType javascript call s:javascript_filetype_settings()
-"function! s:javascript_filetype_settings()
-"	autocmd BufLeave     <buffer> call jslint#clear()
-"	autocmd BufWritePost <buffer> call jslint#check()
-"	autocmd CursorMoved  <buffer> call jslint#message()
-"endfunction
 
-au FileType javascript set ts=4 sw=4 noexpandtab
-au BufNewFile *.js set ft=javascript fenc=utf-8
-
-set laststatus=2
-set statusline=%<%f\ %m%r
-set statusline+=[%{&fenc!=''?&fenc:&enc}][%{&ff}]
-set statusline+=%l:%L
-
-set cmdheight=1
+"set laststatus=2
+"set statusline=%<%f\ %m%r
+"set statusline+=[%{&fenc!=''?&fenc:&enc}][%{&ff}]
+"set statusline+=%l:%L
 
 
 " unite.vim
@@ -208,7 +234,7 @@ nmap <Space>f [unite]
 "インサートモードで開始
 let g:unite_enable_start_insert = 1
 "最近開いたファイル履歴の保存数
-let g:unite_source_file_mru_limit = 50
+let g:unite_source_file_mru_limit = 20
  
 "file_mruの表示フォーマットを指定。空にすると表示スピードが高速化される
 let g:unite_source_file_mru_filename_format = ''
@@ -274,21 +300,17 @@ endfunction
 call unite#custom_action('file', 'my_vsplit', my_action)
 
 
+
 "syntastic 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
-let g:syntastic_javascript_checker='jshint'
+let g:syntastic_javascript_checkers=['jshint']
 let g:syntastic_mode_map = {
       \  'mode': 'active',
-      \ 'active_filetypes': ['ruby', 'javascript'],
-      \ 'passive_filetypes': []
+      \ 'active_filetypes': ['ruby', 'javascript', 'css'],
+      \ 'passive_filetypes': ['html']
       \ }
 
-
-"open browser
-let g:netrw_nogx = 1 " disable netrw's gx mapping.
-nmap gx <Plug>(openbrowser-smart-search)
-vmap gx <Plug>(openbrowser-smart-search)
 
 "css color
 let g:cssColorVimDoNotMessMyUpdatetime = 1
@@ -296,3 +318,57 @@ let g:cssColorVimDoNotMessMyUpdatetime = 1
 
 " nerdtree
 autocmd vimenter * NERDTree
+
+"markdown
+autocmd BufRead,BufNewFile *.mkd  setfiletype mkd
+autocmd BufRead,BufNewFile *.md  setfiletype mkd
+
+
+autocmd FileType css compiler csslint
+
+
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+
+
+augroup MyXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+augroup END
+
+
+" less
+au BufNewFile,BufRead *.less			setf less
+
+
+" enable/disable fugitive/lawrencium integration >
+let g:airline_enable_branch = 1
+
+
+
+" sass
+au! BufRead,BufNewFile *.sass         setfiletype sass 
+
+" mustache
+let g:mustache_abbreviations = 1
+
+" crypt
+set cryptmethod=blowfish
+
+" js lib syntax
+let g:used_javascript_libs = 'underscore,backbone, angularjs, requirejs'
+
+
+" tern_for_vim
+let g:tern_map_keys=1
+let g:tern_show_argument_hints='on_hold'
+
