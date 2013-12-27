@@ -22,7 +22,7 @@ NeoBundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
 NeoBundle 'https://github.com/tsaleh/vim-matchit.git'
 NeoBundle 'https://github.com/othree/html5.vim.git'
 NeoBundle 'https://github.com/groenewege/vim-less.git'
-NeoBundle 'https://github.com/bling/vim-airline.git'
+NeoBundle 'https://github.com/itchyny/lightline.vim.git'
 NeoBundle 'https://github.com/tpope/vim-fugitive.git'
 NeoBundle 'https://github.com/mustache/vim-mode.git'
 NeoBundle 'https://github.com/kchmck/vim-coffee-script.git'
@@ -292,7 +292,7 @@ function! my_action.func(candidates)
 endfunction
 call unite#custom_action('file', 'my_split', my_action)
 
-let my_action = { 'is_selectable' : 1 }                     
+let my_action = { 'is_selectable' : 1 }
 function! my_action.func(candidates)
   wincmd p
   exec 'vsplit '. a:candidates[0].action__path
@@ -350,11 +350,6 @@ augroup END
 au BufNewFile,BufRead *.less			setf less
 
 
-" enable/disable fugitive/lawrencium integration >
-let g:airline_enable_branch = 1
-
-
-
 " sass
 au! BufRead,BufNewFile *.sass         setfiletype sass 
 
@@ -370,5 +365,87 @@ let g:used_javascript_libs = 'underscore,backbone, angularjs, requirejs'
 
 " tern_for_vim
 let g:tern_map_keys=1
+let tern#is_show_argument_hints_enabled = 1
 let g:tern_show_argument_hints='on_hold'
 
+
+" lightline
+let g:lightline = {
+	\ 'colorscheme': 'wombat',
+	\ 'mode_map': {'c': 'NORMAL'},
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+	\   'right': [ [ 'lineinfo',  'syntastic' ],
+	\              [ 'percent' ],
+	\              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+	\ },
+	\ 'component_function': {
+	\   'modified': 'MyModified',
+	\   'readonly': 'MyReadonly',
+	\   'fugitive': 'MyFugitive',
+	\   'filename': 'MyFilename',
+	\   'fileformat': 'MyFileformat',
+	\   'filetype': 'MyFiletype',
+	\   'fileencoding': 'MyFileencoding',
+	\   'mode': 'MyMode'
+	\ },
+	\ 'component_expand': {
+	\   'syntastic': 'SyntasticStatuslineFlag'
+	\ },
+	\ 'component_type': {
+	\   'syntastic': 'error',
+	\ }
+	\ }
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      return fugitive#head()
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+let g:syntastic_mode_map = { 'mode': 'passive' }
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.js, call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction

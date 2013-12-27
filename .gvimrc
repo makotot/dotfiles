@@ -1,25 +1,12 @@
 "set font
 set encoding=cp932
-set ambiwidth=double
+"set ambiwidth=double
 set guifont=Ricty:h12
 "set guifont=Consolas:h10,Lucida_Console:h10:w5 guifontwide=MS_Gothic:h10
 "set guifont=gohufont-14:h14 guifontwide=MS_Gothic:h10
 " 文字コードを元に戻す
 set encoding=utf8
 
-"set alpha
-"gui
-"set transparency=250
-
-" for solarized
-"let g:solarized_termcolors=16
-"let g:solarized_termtrans=0
-"let g:solarized_degrade=0
-"let g:solarized_bold=1
-"let g:solarized_underline=1
-"let g:solarized_italic=1
-"let g:solarized_contrast='normal'
-"let g:solarized_visibility='normal'
 
 " color scheme
 "colorscheme slate
@@ -28,15 +15,8 @@ set encoding=utf8
 "
 "syntax enable
 "set background=dark
-"colorscheme solarized
-"colorscheme railscasts
-"colorscheme vitamins
-"colorscheme ir_black
-"colorscheme luna
-"colorscheme luna-term
-"colorscheme jellybeans
-colorscheme hybrid
-"colorscheme twilight
+"colorscheme hybrid
+colorscheme base16-eighties
 
 
 set shortmess+=I
