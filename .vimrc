@@ -30,6 +30,7 @@ NeoBundle 'https://github.com/cakebaker/scss-syntax.vim.git'
 NeoBundle 'https://github.com/othree/javascript-libraries-syntax.vim.git'
 NeoBundle 'https://github.com/elzr/vim-json.git'
 NeoBundle 'https://github.com/marijnh/tern_for_vim.git'
+NeoBundle 'https://github.com/ap/vim-css-color.git'
 
 filetype plugin indent on
 
@@ -145,8 +146,11 @@ au BufNewFile,BufRead *.py setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandt
 
 "javascript tab
 "au BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4
-au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 softtabstop=2 noexpandtab
+au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 au BufNewFile *.js set ft=javascript fenc=utf-8
+
+" html, hbs
+au BufNewFile,BufRead *.{html,hbs} set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 
 " コーディングスタイル切り替え
 let s:coding_styles = {}
