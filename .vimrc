@@ -151,6 +151,7 @@ au BufNewFile *.js set ft=javascript fenc=utf-8
 
 " html, hbs
 au BufNewFile,BufRead *.{html,hbs} set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
+au BufNewFile,BufRead *.{scss,sass,css} set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
 
 " コーディングスタイル切り替え
 let s:coding_styles = {}
