@@ -31,6 +31,7 @@ NeoBundle 'https://github.com/othree/javascript-libraries-syntax.vim.git'
 NeoBundle 'https://github.com/elzr/vim-json.git'
 NeoBundle 'https://github.com/marijnh/tern_for_vim.git'
 NeoBundle 'https://github.com/ap/vim-css-color.git'
+NeoBundle 'https://github.com/maksimr/vim-jsbeautify.git'
 
 filetype plugin indent on
 
@@ -454,3 +455,7 @@ function! s:syntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
+
+
+"beautify
+map <c-f> :call JsBeautify()<cr>
