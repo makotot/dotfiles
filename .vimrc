@@ -33,6 +33,7 @@ NeoBundle 'https://github.com/marijnh/tern_for_vim.git'
 NeoBundle 'https://github.com/ap/vim-css-color.git'
 NeoBundle 'https://github.com/maksimr/vim-jsbeautify.git'
 NeoBundle 'https://github.com/editorconfig/editorconfig-vim.git'
+NeoBundle 'https://github.com/digitaltoad/vim-jade.git'
 
 filetype plugin indent on
 
