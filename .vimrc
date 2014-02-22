@@ -34,6 +34,10 @@ NeoBundle 'https://github.com/ap/vim-css-color.git'
 NeoBundle 'https://github.com/maksimr/vim-jsbeautify.git'
 NeoBundle 'https://github.com/editorconfig/editorconfig-vim.git'
 NeoBundle 'https://github.com/gcmt/wildfire.vim.git'
+NeoBundle 'https://github.com/tpope/vim-surround.git'
+NeoBundle 'https://github.com/thinca/vim-quickrun.git'
+NeoBundle 'https://github.com/rbtnn/vimconsole.vim.git'
+
 
 filetype plugin indent on
 
