@@ -330,6 +330,7 @@ let g:cssColorVimDoNotMessMyUpdatetime = 1
 
 " nerdtree
 autocmd vimenter * NERDTree
+let g:NERDTreeShowHidden = 1
 
 "markdown
 autocmd BufRead,BufNewFile *.mkd  setfiletype mkd
