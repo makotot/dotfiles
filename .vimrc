@@ -100,6 +100,8 @@ nnoremap <silent> <C-^> <Nop>
 set nobackup
 set noswapfile
 
+set autoread
+
 "ime
 set iminsert=0
 set imsearch=0
