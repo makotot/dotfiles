@@ -54,6 +54,11 @@ if has('gui_macvim')
 	set transparency=4
 endif
 
+"<leader>
+let mapleader = " "
+":e $HOME/.vimrc
+nnoremap <leader>ev :e $MYVIMRC<cr>
+
 "fullscreen
 if has('gui_running')
 	set fuoptions=maxvert,maxhorz
