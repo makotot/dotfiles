@@ -33,11 +33,10 @@ NeoBundle 'https://github.com/marijnh/tern_for_vim.git'
 NeoBundle 'https://github.com/ap/vim-css-color.git'
 NeoBundle 'https://github.com/maksimr/vim-jsbeautify.git'
 NeoBundle 'https://github.com/editorconfig/editorconfig-vim.git'
-NeoBundle 'https://github.com/gcmt/wildfire.vim.git'
 NeoBundle 'https://github.com/tpope/vim-surround.git'
 NeoBundle 'https://github.com/thinca/vim-quickrun.git'
 NeoBundle 'https://github.com/rbtnn/vimconsole.vim.git'
-
+NeoBundle 'https://github.com/Lokaltog/vim-easymotion.git'
 
 filetype plugin indent on
 
@@ -71,7 +70,6 @@ set number
 " listchars
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-
 
 
 " encode
