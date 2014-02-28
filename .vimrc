@@ -471,3 +471,6 @@ endfunction
 
 "beautify
 map <c-f> :call JsBeautify()<cr>
+
+" easymotion
+let g:EasyMotion_use_upper = 1
