@@ -1,0 +1,15 @@
+[user]
+	name = makotot
+	email = makoto.ttn@gmail.com
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
+[gui]
+	encoding = utf-8
+[core]
+	precomposeunicode = true
+	quotepath = false
