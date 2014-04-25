@@ -13,3 +13,10 @@
 [core]
 	precomposeunicode = true
 	quotepath = false
+[merge]
+	tool = vimdiff
+[alias]
+	st = status -b
+	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	co = checkout
+	cm = commit -m
