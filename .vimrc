@@ -38,6 +38,7 @@ NeoBundle 'https://github.com/rbtnn/vimconsole.vim.git'
 NeoBundle 'https://github.com/Lokaltog/vim-easymotion.git'
 NeoBundle 'https://github.com/Yggdroot/indentLine.git'
 NeoBundle 'https://github.com/digitaltoad/vim-jade.git'
+NeoBundle 'https://github.com/lilydjwg/colorizer.git'
 
 filetype plugin indent on
 
