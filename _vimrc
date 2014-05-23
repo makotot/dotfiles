@@ -1,28 +1,35 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-
 if has('vim_starting')
-	call vundle#rc()
+	set runtimepath+=~/.vim/bundle/neobundle.vim
 endif
 
-Bundle 'gmarik/vundle'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/syntastic'
-Bundle 'pangloss/vim-javascript'
-Bundle 'lepture/vim-css'
-Bundle 'wavded/vim-stylus'
-Bundle 'Shougo/unite.vim'
-Bundle 'Shougo/neocomplcache'
-Bundle 'Shougo/neosnippet'
-Bundle 'ujihisa/unite-colorscheme'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'mattn/zencoding-vim'
-Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'goatslacker/mango.vim'
+call neobundle#rc(expand('~/.vim/bundle'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'https://github.com/scrooloose/nerdtree.git'
+NeoBundle 'https://github.com/scrooloose/syntastic.git'
+NeoBundle 'https://github.com/Shougo/unite.vim.git'
+NeoBundle 'https://github.com/Shougo/neocomplcache.git'
+NeoBundle 'https://github.com/Shougo/neosnippet.git'
+NeoBundle 'https://github.com/Shougo/neosnippet-snippets.git'
+NeoBundle 'https://github.com/ujihisa/unite-colorscheme.git'
+NeoBundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
+NeoBundle 'https://github.com/tpope/vim-fugitive.git'
+NeoBundle 'https://github.com/Lokaltog/vim-easymotion.git'
+NeoBundle 'https://github.com/lilydjwg/colorizer.git'
+NeoBundle 'https://github.com/pangloss/vim-javascript.git'
+NeoBundle 'https://github.com/othree/html5.vim.git'
+NeoBundle 'https://github.com/Yggdroot/indentLine.git'
+NeoBundle 'https://github.com/chriskempson/base16-vim.git'
+NeoBundle 'https://github.com/itchyny/lightline.vim.git'
+NeoBundle 'https://github.com/editorconfig/editorconfig-vim.git'
+NeoBundle 'https://github.com/kchmck/vim-coffee-script.git'
+NeoBundle 'https://github.com/cakebaker/scss-syntax.vim.git'
+NeoBundle 'https://github.com/hail2u/vim-css3-syntax.git'
+NeoBundle 'https://github.com/mustache/vim-mustache-handlebars.git'
 
 filetype plugin indent on
 
@@ -58,15 +65,13 @@ set write
 
 set noexpandtab
 
-
-"
 set showcmd
 set cmdheight=1
 
 "バッファ関連
 "編集中でもバッファを切り替えれるようにしておく
 set hidden
-
+"
 "ルーラーを表示
 set ruler
 set title
@@ -100,7 +105,7 @@ au BufNewFile,BufRead *.py setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandt
 
 "javascript tab
 au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-au BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4
+au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 softtabstop=2
 
 " コーディングスタイル切り替え
 let s:coding_styles = {}
@@ -132,24 +137,20 @@ au FileType javascript set dictionary+=$HOME/.vim/dict/node.dict
 "NERDTree
 autocmd vimenter * NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+let g:NERDTreeShowHidden = 1
 
-"plugin key-mappings
-imap <C-k>     <Plug>(neocomplcache_snippets_expand)
-smap <C-k>     <Plug>(neocomplcache_snippets_expand)
 
-"neocomplcache
-let g:neocomplcache_enable_at_startup = 1
+" For snippet_complete marker.
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
 
-let g:neocomplcache_max_list = 5
-let g:neocomplcache_auto_completion_start_length = 2
-let g:neocomplcache_enable_smart_case = 1
-"" like AutoComplPop
-let g:neocomplcache_enable_auto_select = 1
-"" search with camel case like Eclipse
-let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_underbar_completion = 1
-"imap <C-k> <Plug>(neocomplcache_snippets_expand)
-"smap <C-k> <Plug>(neocomplcache_snippets_expand)
+" neocomplcache
+let g:neocomplcache_max_list = 10
+" Plugin key-mappings.
+inoremap <expr><C-g>     neocomplcache#undo_completion()
+inoremap <expr><C-l>     neocomplcache#complete_common_string()
+
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
 "" SuperTab like snippets behavior.
@@ -164,17 +165,6 @@ inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
-
-
-" SuperTab like snippets behavior.
-imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
-smap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" For snippet_complete marker.
-if has('conceal')
-  set conceallevel=2 concealcursor=i
-endif
-
 
 "dictionary
 " js / including node
@@ -238,3 +228,90 @@ endfunction"}}}
 
 "easymotion
 let g:EasyMotion_leader_key = '<Leader>'
+
+set noundofile
+
+" Syntastic
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_css_checkers = ['csslint']
+
+" lightline
+let g:lightline = {
+	\ 'colorscheme': 'wombat',
+	\ 'mode_map': {'c': 'NORMAL'},
+	\ 'active': {
+	\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+	\   'right': [ [ 'lineinfo',  'syntastic' ],
+	\              [ 'percent' ],
+	\              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+	\ },
+	\ 'component_function': {
+	\   'modified': 'MyModified',
+	\   'readonly': 'MyReadonly',
+	\   'fugitive': 'MyFugitive',
+	\   'filename': 'MyFilename',
+	\   'fileformat': 'MyFileformat',
+	\   'filetype': 'MyFiletype',
+	\   'fileencoding': 'MyFileencoding',
+	\   'mode': 'MyMode'
+	\ },
+	\ 'component_expand': {
+	\   'syntastic': 'SyntasticStatuslineFlag'
+	\ },
+	\ 'component_type': {
+	\   'syntastic': 'error',
+	\ }
+	\ }
+
+function! MyModified()
+  return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
+endfunction
+
+function! MyReadonly()
+  return &ft !~? 'help\|vimfiler\|gundo' && &readonly ? 'x' : ''
+endfunction
+
+function! MyFilename()
+  return ('' != MyReadonly() ? MyReadonly() . ' ' : '') .
+        \ (&ft == 'vimfiler' ? vimfiler#get_status_string() :
+        \  &ft == 'unite' ? unite#get_status_string() :
+        \  &ft == 'vimshell' ? vimshell#get_status_string() :
+        \ '' != expand('%:t') ? expand('%:t') : '[No Name]') .
+        \ ('' != MyModified() ? ' ' . MyModified() : '')
+endfunction
+
+function! MyFugitive()
+  try
+    if &ft !~? 'vimfiler\|gundo' && exists('*fugitive#head')
+      return fugitive#head()
+    endif
+  catch
+  endtry
+  return ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? &fileformat : ''
+endfunction
+
+function! MyFiletype()
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+endfunction
+
+function! MyFileencoding()
+  return winwidth(0) > 70 ? (strlen(&fenc) ? &fenc : &enc) : ''
+endfunction
+
+function! MyMode()
+  return winwidth(0) > 60 ? lightline#mode() : ''
+endfunction
+
+let g:syntastic_mode_map = { 'mode': 'passive' }
+augroup AutoSyntastic
+  autocmd!
+  autocmd BufWritePost *.{js,css}, call s:syntastic()
+augroup END
+function! s:syntastic()
+  SyntasticCheck
+  call lightline#update()
+endfunction

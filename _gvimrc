@@ -1,8 +1,7 @@
 "set font
 set encoding=cp932
 set ambiwidth=double
-"set guifont=Consolas:h10,Lucida_Console:h10:w5 guifontwide=MS_Gothic:h10
-set guifont=gohufont-14:h14 guifontwide=MS_Gothic:h10
+set guifont=Consolas:h10,Lucida_Console:h10:w5 guifontwide=MS_Gothic:h10
 " •¶ŽšƒR[ƒh‚ðŒ³‚É–ß‚·
 set encoding=utf8
 
@@ -11,18 +10,15 @@ gui
 set transparency=250
 
 "color sheme
-"colorscheme slate
-"colorscheme desert
-colorscheme wombat
+colorscheme base16-eighties
 
 " syntax highlighting
 set background=dark     " you can use `dark` or `light` as your background
 syntax on
-color mango
 
 "highlight line
 set cursorline
-hi CursorLine term=bold cterm=bold guibg=Grey20
+hi CursorLine term=bold cterm=bold guibg=Grey25
 
 set list
 set listchars=tab:>-,extends:^,precedes:^

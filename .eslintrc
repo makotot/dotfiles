@@ -1,10 +1,17 @@
 {
   "env": {
     "browser": true,
-    "node": true
+    "node": true,
+    "amd": true
+  },
+  "globals": {
+    "$": true,
+    "jQuery": true,
+    "_": true
   },
   "rules": {
     "quotes": [1, "single"],
-    "strict": [0]
+    "strict": [0],
+    "max-params": [1, 4]
   }
 }
