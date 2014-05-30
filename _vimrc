@@ -30,6 +30,7 @@ NeoBundle 'https://github.com/kchmck/vim-coffee-script.git'
 NeoBundle 'https://github.com/cakebaker/scss-syntax.vim.git'
 NeoBundle 'https://github.com/hail2u/vim-css3-syntax.git'
 NeoBundle 'https://github.com/mustache/vim-mustache-handlebars.git'
+NeoBundle 'https://github.com/tmhedberg/matchit.git'
 
 filetype plugin indent on
 
