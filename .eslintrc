@@ -5,9 +5,10 @@
     "amd": true
   },
   "globals": {
-    "$": true,
-    "jQuery": true,
-    "_": true
+    "$": false,
+    "jQuery": false,
+    "_": false,
+    "Backbone": false
   },
   "rules": {
     "quotes": [1, "single"],
