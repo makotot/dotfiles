@@ -12,6 +12,7 @@
   "rules": {
     "quotes": [1, "single"],
     "strict": [0],
-    "max-params": [1, 4]
+    "max-params": [1, 4],
+    "semi": [1, "always"]
   }
 }
