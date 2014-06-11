@@ -14,6 +14,7 @@
     "quotes": [1, "single"],
     "strict": [0],
     "max-params": [1, 4],
-    "semi": [1, "always"]
+    "semi": [1, "always"],
+    "no-unused-vars": [1, {"vars": "all", "args": "after-used"}]
   }
 }
