@@ -5,9 +5,9 @@
     "amd": true
   },
   "globals": {
-    "$": false,
+    "$": true,
     "jQuery": false,
-    "_": false,
+    "_": true,
     "Backbone": false,
     "alert": false
   },
