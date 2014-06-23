@@ -9,14 +9,7 @@ set encoding=utf8
 
 
 " color scheme
-"colorscheme slate
-"colorscheme desert
-"colorscheme wombat
-"
-"syntax enable
-"set background=dark
-"colorscheme hybrid
-colorscheme base16-eighties
+colorscheme base16-ocean
 
 
 set shortmess+=I
