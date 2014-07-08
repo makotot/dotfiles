@@ -13,7 +13,6 @@ ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="powerline"
 ZSH_THEME="pure"
 
-
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
@@ -47,11 +46,7 @@ POWERLINE_RIGHT_A="mixed"
 
 source $ZSH/oh-my-zsh.sh
 
-
 # Customize to your needs...
-
-
-export PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/usr/local/git/bin:/usr/local/sbin:$HOME/.rvm/bin:$PATH
 
 # nvm
 if [ -f "$HOME/.nvm/nvm.sh" ]; then
@@ -60,7 +55,6 @@ fi
 
 nvm use v0.10.0
 
-
 # syntax-highlight
 if [ -f ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]; then
   source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
@@ -68,9 +62,6 @@ fi
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" 
-
 
 autoload -U promptinit && promptinit
 prompt pure
@@ -128,3 +119,12 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+source ~/zaw/zaw.zsh
+
+
+# rbenv
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init - zsh)"
+export CC=/usr/bin/gcc-4.2
+
