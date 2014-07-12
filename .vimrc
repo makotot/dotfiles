@@ -325,13 +325,12 @@ call unite#custom_action('file', 'my_vsplit', my_action)
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_mode_map = {
       \  'mode': 'active',
       \ 'active_filetypes': ['ruby', 'javascript', 'css'],
       \ 'passive_filetypes': ['html']
       \ }
-
-let g:syntastic_css_checkers = ['csslint']
 
 
 "css color
@@ -346,8 +345,7 @@ let g:NERDTreeShowHidden = 1
 autocmd BufRead,BufNewFile *.mkd  setfiletype mkd
 autocmd BufRead,BufNewFile *.md  setfiletype mkd
 
-
-autocmd FileType css compiler csslint
+autocmd BufNewFile,BufRead *.css,*.less set filetype=css
 
 
 " Plugin key-mappings.
@@ -466,7 +464,7 @@ endfunction
 let g:syntastic_mode_map = { 'mode': 'passive' }
 augroup AutoSyntastic
   autocmd!
-  autocmd BufWritePost *.js, call s:syntastic()
+  autocmd BufWritePost *.{js,css}, call s:syntastic()
 augroup END
 function! s:syntastic()
   SyntasticCheck
@@ -480,5 +478,6 @@ map <c-f> :call JsBeautify()<cr>
 " easymotion
 let g:EasyMotion_use_upper = 1
 
+let g:used_javascript_libs = 'underscore,backbone,jquery'
 
 cd $HOME
