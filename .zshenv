@@ -13,6 +13,3 @@ fi
 
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
-
-export GOPATH=~/.go
-export PATH=$GOPATH/bin:$PATH

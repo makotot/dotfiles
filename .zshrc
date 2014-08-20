@@ -128,3 +128,13 @@ export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init - zsh)"
 export CC=/usr/bin/gcc-4.2
 
+
+export PATH=/usr/local/sbin:$PATH
+
+
+# added by travis gem
+[ -f /Users/makototateno/.travis/travis.sh ] && source /Users/makototateno/.travis/travis.sh
+
+
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
