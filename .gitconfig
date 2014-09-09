@@ -1,25 +1,26 @@
 [user]
-	name = makotot
-	email = makoto.ttn@gmail.com
+  name = makotot
+  email = makoto.ttn@gmail.com
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	ui = true
-	pager = true
+  diff = auto
+  status = auto
+  branch = auto
+  interactive = auto
+  ui = true
+  pager = true
 [gui]
-	encoding = utf-8
+  encoding = utf-8
 [core]
-	precomposeunicode = true
-	quotepath = false
+  precomposeunicode = true
+  quotepath = false
 [merge]
-	tool = vimdiff
+  tool = vimdiff
 [alias]
-	st = status -b
-	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	co = checkout
-	cm = commit -m
-  br = branch
+  st = status -b
+  lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  co = checkout
+  cm = commit -m
+  a = add -A
+  i = initr = branch
 [push]
-	default = matching
+  default = matching
