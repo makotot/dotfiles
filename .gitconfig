@@ -21,6 +21,6 @@
   co = checkout
   cm = commit -m
   a = add -A
-  i = initr = branch
+  i = init = branch
 [push]
   default = matching
