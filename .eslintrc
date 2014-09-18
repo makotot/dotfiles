@@ -9,7 +9,8 @@
     "jQuery": false,
     "_": true,
     "Backbone": false,
-    "alert": false
+    "alert": false,
+    "angular": false
   },
   "rules": {
     "quotes": [1, "single"],
