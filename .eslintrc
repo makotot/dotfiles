@@ -30,6 +30,7 @@
     "wrap-regex": [2],
     "no-mixed-requires": [1, true],
     "eol-last": [0],
-    "no-bitwise": [1]
+    "no-bitwise": [1],
+    "dot-notation": [1]
   }
 }
