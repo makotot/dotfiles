@@ -52,8 +52,8 @@ endif
 
 if has('gui_macvim')
 	set showtabline=2
-	"set guifont=Monaco:h11
-	set guifont=Ricty:h12
+	"set guifont=Monaco:h10
+	set guifont=Ricty:h10
 	set transparency=4
 endif
 

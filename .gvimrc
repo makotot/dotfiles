@@ -1,7 +1,7 @@
 "set font
 set encoding=cp932
 "set ambiwidth=double
-set guifont=Ricty:h12
+set guifont=Ricty:h10
 "set guifont=Consolas:h10,Lucida_Console:h10:w5 guifontwide=MS_Gothic:h10
 "set guifont=gohufont-14:h14 guifontwide=MS_Gothic:h10
 " 文字コードを元に戻す
