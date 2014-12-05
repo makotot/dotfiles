@@ -33,8 +33,6 @@ NeoBundle 'https://github.com/ap/vim-css-color.git'
 NeoBundle 'https://github.com/maksimr/vim-jsbeautify.git'
 NeoBundle 'https://github.com/editorconfig/editorconfig-vim.git'
 NeoBundle 'https://github.com/tpope/vim-surround.git'
-NeoBundle 'https://github.com/thinca/vim-quickrun.git'
-NeoBundle 'https://github.com/rbtnn/vimconsole.vim.git'
 NeoBundle 'https://github.com/Lokaltog/vim-easymotion.git'
 NeoBundle 'https://github.com/Yggdroot/indentLine.git'
 NeoBundle 'https://github.com/digitaltoad/vim-jade.git'
@@ -302,6 +300,7 @@ let g:vimfiler_as_default_explorer = 1
 
 
 "syntastic 
+let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_javascript_checkers=['eslint']
@@ -311,7 +310,6 @@ let g:syntastic_mode_map = {
       \ 'active_filetypes': ['ruby', 'javascript', 'css'],
       \ 'passive_filetypes': ['html']
       \ }
-
 
 "css color
 let g:cssColorVimDoNotMessMyUpdatetime = 1
