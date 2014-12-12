@@ -10,6 +10,7 @@
     "_": true,
     "Backbone": false,
     "angular": false,
+    "ko": false,
     "alert": false
   },
   "rules": {
