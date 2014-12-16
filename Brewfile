@@ -10,7 +10,8 @@ install openssl || true
 install readline || true
 install ack || true
 
-install zsh || tree
+install zsh || true
+install fish || true
 
 install git || true
 
