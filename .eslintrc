@@ -11,6 +11,7 @@
     "Backbone": false,
     "angular": false,
     "ko": false,
+    "d3": false,
     "alert": false
   },
   "rules": {
