@@ -45,6 +45,7 @@ NeoBundle 'https://github.com/lilydjwg/colorizer.git'
 NeoBundle 'https://github.com/tmhedberg/matchit.git'
 NeoBundle 'https://github.com/fatih/vim-go.git'
 NeoBundle 'https://github.com/docunext/closetag.vim.git'
+NeoBundle 'https://github.com/glidenote/memolist.vim.git'
 
 call neobundle#end()
 
@@ -467,5 +468,10 @@ map <c-f> :call JsBeautify()<cr>
 let g:EasyMotion_use_upper = 1
 
 let g:used_javascript_libs = 'underscore,backbone,jquery,angularjs'
+
+
+" memolist
+let g:memolist_memo_suffix = "md"
+let g:memolist_unite = 1
 
 cd $HOME
