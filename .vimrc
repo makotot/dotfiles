@@ -5,8 +5,13 @@ if has('vim_starting')
 	set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
+if has('mac')
+  let g:vimproc_dll_path = $VIMRUNTIME . '/autoload/vimproc_mac.so'
+endif
+
+
 "bundle
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#begin(expand('~/.vim/bundle/'))
 
 NeoBundle 'https://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'https://github.com/Shougo/unite.vim.git'
@@ -39,8 +44,12 @@ NeoBundle 'https://github.com/digitaltoad/vim-jade.git'
 NeoBundle 'https://github.com/lilydjwg/colorizer.git'
 NeoBundle 'https://github.com/tmhedberg/matchit.git'
 NeoBundle 'https://github.com/fatih/vim-go.git'
+NeoBundle 'https://github.com/docunext/closetag.vim.git'
+
+call neobundle#end()
 
 filetype plugin indent on
+
 
 "check bundle
 if neobundle#exists_not_installed_bundles()
@@ -50,8 +59,8 @@ endif
 
 if has('gui_macvim')
 	set showtabline=2
-	"set guifont=Monaco:h10
-	set guifont=Ricty:h10
+"	set guifont=Monaco:h9
+	set guifont=Ricty:h11
 	set transparency=4
 endif
 
@@ -229,9 +238,10 @@ let g:neocomplcache_dictionary_filetype_lists = {
   \  'javascript' : $HOME . '/.vim/dict/javascript.dict',
   \  'html' : $HOME . '/.vim/dict/html.dict'
   \ }
+
 "enable omni
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,hbs,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -300,7 +310,6 @@ let g:vimfiler_as_default_explorer = 1
 
 
 "syntastic 
-let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_javascript_checkers=['eslint']
@@ -310,6 +319,7 @@ let g:syntastic_mode_map = {
       \ 'active_filetypes': ['ruby', 'javascript', 'css'],
       \ 'passive_filetypes': ['html']
       \ }
+
 
 "css color
 let g:cssColorVimDoNotMessMyUpdatetime = 1
@@ -350,7 +360,7 @@ au BufNewFile,BufRead *.less			setf less
 
 
 " sass
-au! BufRead,BufNewFile *.sass         setfiletype sass 
+au! BufRead,BufNewFile *.sass         setfiletype sass
 
 " mustache
 let g:mustache_abbreviations = 1
@@ -359,7 +369,7 @@ let g:mustache_abbreviations = 1
 set cryptmethod=blowfish
 
 " js lib syntax
-let g:used_javascript_libs = 'underscore,backbone, angularjs, requirejs'
+let g:used_javascript_libs = 'underscore, backbone, angularjs, requirejs'
 
 
 " tern_for_vim
@@ -456,6 +466,6 @@ map <c-f> :call JsBeautify()<cr>
 " easymotion
 let g:EasyMotion_use_upper = 1
 
-let g:used_javascript_libs = 'underscore,backbone,jquery'
+let g:used_javascript_libs = 'underscore,backbone,jquery,angularjs'
 
 cd $HOME
