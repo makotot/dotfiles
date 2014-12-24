@@ -12,6 +12,7 @@
     "angular": false,
     "ko": false,
     "d3": false,
+    "Vue": false,
     "alert": false
   },
   "rules": {
