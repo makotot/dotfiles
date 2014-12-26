@@ -370,7 +370,7 @@ let g:mustache_abbreviations = 1
 set cryptmethod=blowfish
 
 " js lib syntax
-let g:used_javascript_libs = 'underscore, backbone, angularjs, requirejs'
+let g:used_javascript_libs = 'underscore, backbone, angularjs, requirejs, jquery'
 
 
 " tern_for_vim
@@ -466,8 +466,6 @@ map <c-f> :call JsBeautify()<cr>
 
 " easymotion
 let g:EasyMotion_use_upper = 1
-
-let g:used_javascript_libs = 'underscore,backbone,jquery,angularjs'
 
 
 " memolist
