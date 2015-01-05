@@ -46,6 +46,7 @@ NeoBundle 'https://github.com/tmhedberg/matchit.git'
 NeoBundle 'https://github.com/fatih/vim-go.git'
 NeoBundle 'https://github.com/docunext/closetag.vim.git'
 NeoBundle 'https://github.com/glidenote/memolist.vim.git'
+NeoBundle 'https://github.com/mxw/vim-jsx.git'
 
 call neobundle#end()
 
