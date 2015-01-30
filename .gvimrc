@@ -1,7 +1,7 @@
 "set font
 set encoding=cp932
 "set ambiwidth=double
-set guifont=Ricty:h10
+set guifont=Ricty:h11
 "set guifont=Consolas:h10,Lucida_Console:h10:w5 guifontwide=MS_Gothic:h10
 "set guifont=gohufont-14:h14 guifontwide=MS_Gothic:h10
 " 文字コードを元に戻す
@@ -9,7 +9,7 @@ set encoding=utf8
 
 
 " color scheme
-colorscheme base16-ocean
+colorscheme base16-eighties
 
 
 set shortmess+=I
