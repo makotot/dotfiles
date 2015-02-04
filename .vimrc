@@ -250,7 +250,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
-
 "set laststatus=2
 "set statusline=%<%f\ %m%r
 "set statusline+=[%{&fenc!=''?&fenc:&enc}][%{&ff}]
@@ -312,16 +311,6 @@ let g:vimfiler_as_default_explorer = 1
 
 
 
-"syntastic 
-let g:syntastic_enable_signs=1
-let g:syntastic_auto_loc_list=2
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_css_checkers = ['csslint']
-let g:syntastic_mode_map = {
-      \  'mode': 'active',
-      \ 'active_filetypes': ['ruby', 'javascript', 'css'],
-      \ 'passive_filetypes': ['html']
-      \ }
 
 
 "css color
@@ -461,6 +450,18 @@ function! s:syntastic()
   SyntasticCheck
   call lightline#update()
 endfunction
+
+"syntastic 
+let g:syntastic_enable_signs=1
+let g:syntastic_auto_loc_list=2
+let g:syntastic_javascript_checkers=['eslint']
+let g:syntastic_css_checkers = ['csslint']
+let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_mode_map = {
+      \ "mode": "active",
+      \ "active_filetypes": ["ruby", "python", "javascript", "css"],
+      \ "passive_filetypes": ["html"]
+      \ }
 
 
 "beautify
