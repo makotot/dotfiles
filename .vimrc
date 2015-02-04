@@ -456,7 +456,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 let g:syntastic_javascript_checkers=['eslint']
 let g:syntastic_css_checkers = ['csslint']
-let g:syntastic_python_checkers = ['flake8']
+let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_mode_map = {
       \ "mode": "active",
       \ "active_filetypes": ["ruby", "python", "javascript", "css"],
