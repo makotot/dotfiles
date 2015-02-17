@@ -26,14 +26,14 @@ indent_size = 2
 indent_style = space
 indent_size = 2
 [*.css]
-indent_style = tab
-indent_size = 4
+indent_style = space
+indent_size = 2
 [*.scss]
-indent_style = tab
-indent_size = 4
+indent_style = space
+indent_size = 2
 [*.less]
-indent_style = tab
-indent_size = 4
+indent_style = space
+indent_size = 2
 [*.py]
 indent_style = tab
 indent_size = 4
