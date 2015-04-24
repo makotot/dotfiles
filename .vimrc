@@ -49,6 +49,8 @@ NeoBundle 'https://github.com/glidenote/memolist.vim.git'
 NeoBundle 'https://github.com/mxw/vim-jsx.git'
 NeoBundle 'https://github.com/chriskempson/base16-vim.git'
 NeoBundle 'https://github.com/shime/vim-livedown.git'
+NeoBundle 'https://github.com/toyamarinyon/vim-swift.git'
+NeoBundle 'https://github.com/Keithbsmiley/swift.vim.git'
 
 call neobundle#end()
 
