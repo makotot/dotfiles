@@ -9,6 +9,7 @@ install tree || true
 install openssl || true
 install readline || true
 install ack || true
+install gibo || true
 
 install zsh || true
 install fish || true
