@@ -8,7 +8,7 @@
     "$": true,
     "jQuery": false,
     "_": true,
-    "Backbone": false,
+    "Backbone": true,
     "angular": false,
     "ko": false,
     "d3": false,
