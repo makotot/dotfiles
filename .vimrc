@@ -22,36 +22,29 @@ NeoBundle 'https://github.com/Shougo/vimshell.git'
 NeoBundle 'https://github.com/Shougo/vimfiler.git'
 NeoBundle 'https://github.com/Shougo/vimproc.git'
 NeoBundle 'https://github.com/scrooloose/syntastic.git'
-"NeoBundle 'https://github.com/pangloss/vim-javascript.git'
+NeoBundle 'https://github.com/pangloss/vim-javascript.git'
 NeoBundle 'https://github.com/othree/yajs.vim.git'
 NeoBundle 'https://github.com/scrooloose/nerdtree.git'
 NeoBundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
 NeoBundle 'https://github.com/othree/html5.vim.git'
-NeoBundle 'https://github.com/groenewege/vim-less.git'
 NeoBundle 'https://github.com/itchyny/lightline.vim.git'
 NeoBundle 'https://github.com/tpope/vim-fugitive.git'
 NeoBundle 'https://github.com/mustache/vim-mustache-handlebars.git'
-NeoBundle 'https://github.com/kchmck/vim-coffee-script.git'
 NeoBundle 'https://github.com/cakebaker/scss-syntax.vim.git'
 NeoBundle 'https://github.com/othree/javascript-libraries-syntax.vim.git'
 NeoBundle 'https://github.com/marijnh/tern_for_vim.git'
-NeoBundle 'https://github.com/ap/vim-css-color.git'
 NeoBundle 'https://github.com/maksimr/vim-jsbeautify.git'
 NeoBundle 'https://github.com/editorconfig/editorconfig-vim.git'
-NeoBundle 'https://github.com/tpope/vim-surround.git'
-NeoBundle 'https://github.com/Lokaltog/vim-easymotion.git'
 NeoBundle 'https://github.com/Yggdroot/indentLine.git'
-NeoBundle 'https://github.com/digitaltoad/vim-jade.git'
 NeoBundle 'https://github.com/lilydjwg/colorizer.git'
 NeoBundle 'https://github.com/tmhedberg/matchit.git'
-NeoBundle 'https://github.com/fatih/vim-go.git'
 NeoBundle 'https://github.com/docunext/closetag.vim.git'
 NeoBundle 'https://github.com/glidenote/memolist.vim.git'
 NeoBundle 'https://github.com/mxw/vim-jsx.git'
 NeoBundle 'https://github.com/chriskempson/base16-vim.git'
 NeoBundle 'https://github.com/shime/vim-livedown.git'
-NeoBundle 'https://github.com/toyamarinyon/vim-swift.git'
-NeoBundle 'https://github.com/Keithbsmiley/swift.vim.git'
+NeoBundle 'https://github.com/ryanoasis/vim-devicons.git'
+NeoBundle 'https://github.com/briancollins/vim-jst.git'
 
 call neobundle#end()
 
@@ -67,7 +60,8 @@ endif
 if has('gui_macvim')
 	set showtabline=2
 "	set guifont=Monaco:h9
-	set guifont=Ricty:h11
+	"set guifont=Ricty:h11
+  set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 	set transparency=4
 endif
 
@@ -158,7 +152,7 @@ au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2
 au BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
 
 "for jquery syntax
-au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
+"au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
 
 "for CSS3 syntax
 " au BufRead,BufNewFile *.css set ft=css syntax=css3 
@@ -429,12 +423,20 @@ function! MyFugitive()
   return ''
 endfunction
 
-function! MyFileformat()
-  return winwidth(0) > 70 ? &fileformat : ''
-endfunction
+"function! MyFileformat()
+"  return winwidth(0) > 70 ? &fileformat : ''
+"endfunction
+"
+"function! MyFiletype()
+"  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+"endfunction
 
 function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+endfunction
+
+function! MyFileformat()
+  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
 endfunction
 
 function! MyFileencoding()
