@@ -12,7 +12,7 @@ set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 
 " color scheme
 """colorscheme base16-eighties
-colorscheme seti
+colorscheme pencil
 
 
 set shortmess+=I
