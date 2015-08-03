@@ -95,8 +95,6 @@ set encoding=utf-8
 set fileencodings=utf8,cp932,sjis,euc-jp
 
 "chabge Cursor color
-"highlight Cursor guifg=white guibg=skyblue
-"highlight iCursor guifg=white guibg=skyBlue1
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set guicursor+=i:blinkwait10
@@ -147,44 +145,6 @@ nnoremap <Esc><Esc> :nohlsearch<CR>
 " copy & paste
 set clipboard=unnamed
 
-"タブ幅をリセット
-au BufNewFile,BufRead * set tabstop=4 shiftwidth=4
-
-".rhtmlと.rbと.ymlでタブ幅を変更
-au BufNewFile,BufRead *.rhtml set tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.rb set tabstop=2 shiftwidth=2
-au BufNewFile,BufRead *.yml set tabstop=2 shiftwidth=2
-
-"for jquery syntax
-"au BufRead,BufNewFile jquery.*.js set ft=javascript syntax=jquery
-
-"for CSS3 syntax
-" au BufRead,BufNewFile *.css set ft=css syntax=css3 
-
-
-"for JSON syntax
-au! BufRead,BufNewFile *.json setfiletype json 
-
-"for Markdown
-autocmd BufNewFile,BufRead *.{md,mkd,mkdn,mark*} set filetype=markdown
-au BufNewFile,BufRead *.{md,mkd,mkdn,mark*} setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-
-" .pyでタブ幅を変更・スペースでインデントに変更
-au BufNewFile,BufRead *.py setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-
-"javascript tab
-"au BufNewFile,BufRead *.js set tabstop=4 shiftwidth=4 softtabstop=4
-au BufNewFile,BufRead *.js set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
-au BufNewFile *.js set ft=javascript fenc=utf-8
-
-" html, hbs
-au BufNewFile,BufRead *.{html,hbs} set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
-au BufNewFile,BufRead *.{scss,sass,css} set tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
-
-" コーディングスタイル切り替え
-let s:coding_styles = {}
-let s:coding_styles['Default'] = 'setl tabstop=4 shiftwidth=4 shiftwidth=4 softtabstop=4 noexpandtab'
-let s:coding_styles['ShortExpandStyle'] = 'setl tabstop=2 shiftwidth=2 shiftwidth=2 softtabstop=2 expandtab'
 
 command!
 			\	-bar -nargs=1 -complete=customlist,s:coding_style_complete
@@ -252,12 +212,6 @@ autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 
-"set laststatus=2
-"set statusline=%<%f\ %m%r
-"set statusline+=[%{&fenc!=''?&fenc:&enc}][%{&ff}]
-"set statusline+=%l:%L
-
-
 " unite.vim
 "unite prefix key.
 nnoremap [unite] <Nop>
@@ -312,9 +266,6 @@ endfunction"}}}
 let g:vimfiler_as_default_explorer = 1
 
 
-
-
-
 "css color
 let g:cssColorVimDoNotMessMyUpdatetime = 1
 
@@ -363,7 +314,7 @@ let g:mustache_abbreviations = 1
 set cryptmethod=blowfish
 
 " js lib syntax
-let g:used_javascript_libs = 'underscore, backbone, angularjs, requirejs, jquery'
+let g:used_javascript_libs = 'underscore, backbone, angularjs, requirejs, jquery, react'
 
 
 " tern_for_vim
@@ -426,14 +377,6 @@ function! MyFugitive()
   endtry
   return ''
 endfunction
-
-"function! MyFileformat()
-"  return winwidth(0) > 70 ? &fileformat : ''
-"endfunction
-"
-"function! MyFiletype()
-"  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : ''
-"endfunction
 
 function! MyFiletype()
   return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
