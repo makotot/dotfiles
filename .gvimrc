@@ -51,4 +51,5 @@ highlight iCursor guifg=white guibg=LawnGreen
 "set listchars=tab:>-,extends:^,precedes:^
 hi Search guibg=LawnGreen guifg=SkyBlue2
 
-
+hi NonText guibg=NONE guifg=IndianRed3
+hi SpecialKey guibg=NONE guifg=Gray23
