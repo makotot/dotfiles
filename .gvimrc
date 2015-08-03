@@ -11,8 +11,8 @@ set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 
 
 " color scheme
-"""colorscheme base16-eighties
 colorscheme pencil
+
 
 
 set shortmess+=I
@@ -50,4 +50,5 @@ highlight iCursor guifg=white guibg=LawnGreen
 "set list
 "set listchars=tab:>-,extends:^,precedes:^
 hi Search guibg=LawnGreen guifg=SkyBlue2
+
 

@@ -84,6 +84,9 @@ set number
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
 
+hi NonText guibg=NONE guifg=IndianRed3
+hi SpecialKey guibg=NONE guifg=Gray23
+
 " undofile
 set noundofile
 
