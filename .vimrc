@@ -45,6 +45,7 @@ NeoBundle 'https://github.com/chriskempson/base16-vim.git'
 NeoBundle 'https://github.com/shime/vim-livedown.git'
 NeoBundle 'https://github.com/ryanoasis/vim-devicons.git'
 NeoBundle 'https://github.com/briancollins/vim-jst.git'
+NeoBundle 'https://github.com/soramugi/auto-ctags.vim.git'
 
 call neobundle#end()
 
