@@ -428,4 +428,9 @@ let g:EasyMotion_use_upper = 1
 let g:memolist_memo_suffix = "md"
 let g:memolist_unite = 1
 
+" ctags
+let g:auto_ctags_directory_list = ['.git']
+set tags+=.git/tags
+
+
 cd $HOME
