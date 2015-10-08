@@ -2,7 +2,7 @@ set nocompatible
 filetype off
 
 if has('vim_starting')
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 if has('mac')
@@ -54,16 +54,16 @@ filetype plugin indent on
 
 "check bundle
 if neobundle#exists_not_installed_bundles()
-	echomsg 'Not installed bundles:' . string(neobundle#get_not_installed_bundle_names())
-	echomsg 'Please execute "NeoBundleInstall"'
+  echomsg 'Not installed bundles:' . string(neobundle#get_not_installed_bundle_names())
+  echomsg 'Please execute "NeoBundleInstall"'
 endif
 
 if has('gui_macvim')
-	set showtabline=2
-"	set guifont=Monaco:h9
-	"set guifont=Ricty:h11
+  set showtabline=2
+  "	set guifont=Monaco:h9
+  "set guifont=Ricty:h11
   set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
-	set transparency=4
+  set transparency=4
 endif
 
 "<leader>
@@ -73,8 +73,8 @@ nnoremap <leader>ev :e $MYVIMRC<cr>
 
 "fullscreen
 if has('gui_running')
-	set fuoptions=maxvert,maxhorz
-	au GUIEnter * set fullscreen
+  set fuoptions=maxvert,maxhorz
+  au GUIEnter * set fullscreen
 endif
 
 "show line number
@@ -102,9 +102,9 @@ set guicursor+=i:blinkwait10
 
 "入力モード時、ステータスラインのカラーを変更
 augroup InsertHook
-autocmd!
-autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
-autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
+  autocmd!
+  autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
+  autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
 augroup END
 
 au   BufEnter *   execute ":lcd " . expand("%:p:h")
@@ -131,6 +131,8 @@ set noexpandtab
 set showcmd
 set cmdheight=1
 
+set showmatch
+
 "バッファ関連
 "編集中でもバッファを切り替えれるようにしておく
 set hidden
@@ -147,12 +149,12 @@ set clipboard=unnamed
 
 
 command!
-			\	-bar -nargs=1 -complete=customlist,s:coding_style_complete
-			\	CodingStyle
-			\	execute get(s:coding_styles, <f-args>, '')
+      \	-bar -nargs=1 -complete=customlist,s:coding_style_complete
+      \	CodingStyle
+      \	execute get(s:coding_styles, <f-args>, '')
 
 function! s:coding_style_complete(...) "{{{
-	return keys(s:coding_styles)
+  return keys(s:coding_styles)
 endfunction "}}}
 
 " HTML Tidy
@@ -198,11 +200,11 @@ inoremap <expr><C-e> neocomplcache#cancel_popup()
 "dictionary
 " js / including node
 let g:neocomplcache_dictionary_filetype_lists = {
-  \ 'default' : '',
-  \  'css' : $HOME . '/.vim/dict/css.dict',
-  \  'javascript' : $HOME . '/.vim/dict/javascript.dict',
-  \  'html' : $HOME . '/.vim/dict/html.dict'
-  \ }
+      \ 'default' : '',
+      \  'css' : $HOME . '/.vim/dict/css.dict',
+      \  'javascript' : $HOME . '/.vim/dict/javascript.dict',
+      \  'html' : $HOME . '/.vim/dict/html.dict'
+      \ }
 
 "enable omni
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
@@ -216,16 +218,16 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 "unite prefix key.
 nnoremap [unite] <Nop>
 nmap <Space>f [unite]
- 
+
 "unite general settings
 "インサートモードで開始
 let g:unite_enable_start_insert = 1
 "最近開いたファイル履歴の保存数
 let g:unite_source_file_mru_limit = 20
- 
+
 "file_mruの表示フォーマットを指定。空にすると表示スピードが高速化される
 let g:unite_source_file_mru_filename_format = ''
- 
+
 "現在開いているファイルのディレクトリ下のファイル一覧。
 "開いていない場合はカレントディレクトリ
 noremap <C-U> :Unite -buffer-name=file file<CR>
@@ -325,31 +327,31 @@ let g:tern_show_argument_hints='on_hold'
 
 " lightline
 let g:lightline = {
-	\ 'colorscheme': 'wombat',
-	\ 'mode_map': {'c': 'NORMAL'},
-	\ 'active': {
-	\   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
-	\   'right': [ [ 'lineinfo',  'syntastic' ],
-	\              [ 'percent' ],
-	\              [ 'fileformat', 'fileencoding', 'filetype' ] ]
-	\ },
-	\ 'component_function': {
-	\   'modified': 'MyModified',
-	\   'readonly': 'MyReadonly',
-	\   'fugitive': 'MyFugitive',
-	\   'filename': 'MyFilename',
-	\   'fileformat': 'MyFileformat',
-	\   'filetype': 'MyFiletype',
-	\   'fileencoding': 'MyFileencoding',
-	\   'mode': 'MyMode'
-	\ },
-	\ 'component_expand': {
-	\   'syntastic': 'SyntasticStatuslineFlag'
-	\ },
-	\ 'component_type': {
-	\   'syntastic': 'error',
-	\ }
-	\ }
+      \ 'colorscheme': 'wombat',
+      \ 'mode_map': {'c': 'NORMAL'},
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
+      \   'right': [ [ 'lineinfo',  'syntastic' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat', 'fileencoding', 'filetype' ] ]
+      \ },
+      \ 'component_function': {
+      \   'modified': 'MyModified',
+      \   'readonly': 'MyReadonly',
+      \   'fugitive': 'MyFugitive',
+      \   'filename': 'MyFilename',
+      \   'fileformat': 'MyFileformat',
+      \   'filetype': 'MyFiletype',
+      \   'fileencoding': 'MyFileencoding',
+      \   'mode': 'MyMode'
+      \ },
+      \ 'component_expand': {
+      \   'syntastic': 'SyntasticStatuslineFlag'
+      \ },
+      \ 'component_type': {
+      \   'syntastic': 'error',
+      \ }
+      \ }
 
 function! MyModified()
   return &ft =~ 'help\|vimfiler\|gundo' ? '' : &modified ? '+' : &modifiable ? '' : '-'
