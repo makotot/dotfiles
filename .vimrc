@@ -46,6 +46,7 @@ NeoBundle 'https://github.com/shime/vim-livedown.git'
 NeoBundle 'https://github.com/ryanoasis/vim-devicons.git'
 NeoBundle 'https://github.com/briancollins/vim-jst.git'
 NeoBundle 'https://github.com/soramugi/auto-ctags.vim.git'
+NeoBundle 'https://github.com/elzr/vim-json.git'
 
 call neobundle#end()
 
@@ -99,6 +100,8 @@ set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set guicursor+=i:blinkwait10
 
+"json conceal
+let g:vim_json_syntax_conceal = 0
 
 "入力モード時、ステータスラインのカラーを変更
 augroup InsertHook
