@@ -14,11 +14,16 @@ install ctags || true
 
 install zsh || true
 install fish || true
+install iterm2 || true
 
 install git || true
 
 install node || true
 install ruby-build || true
 install rbenv || true
+
+install google-chrome || true
+
+install alfred || true
 
 cleanup
