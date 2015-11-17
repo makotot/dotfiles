@@ -1,17 +1,6 @@
 set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 
-
-" color scheme
-colorscheme base16-ocean
-
-
 set shortmess+=I
-
-
-" syntax highlighting
-set background=dark     " you can use `dark` or `light` as your background
-syntax on
-"color mango
 
 set autoindent
 
@@ -30,16 +19,3 @@ source $VIMRUNTIME/menu.vim
 "ツールバーを非表示
 set guioptions-=T
 set guioptions-=m
-
-" highlight CursorLine
-set cursorline
-hi CursorLine term=bold cterm=bold guibg=gray25
-highlight Cursor guifg=white guibg=SpringGreen3
-highlight iCursor guifg=white guibg=LawnGreen
-"set list
-"set listchars=tab:>-,extends:^,precedes:^
-hi Search guibg=LawnGreen guifg=SkyBlue2
-
-hi NonText guibg=NONE guifg=IndianRed3
-hi SpecialKey guibg=NONE guifg=Gray23
-
