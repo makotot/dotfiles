@@ -22,5 +22,8 @@
   cm = commit -m
   a = add -A
   i = init = branch
+  br = branch
 [push]
   default = matching
+[url "https://"]
+  insteadOf = git://
