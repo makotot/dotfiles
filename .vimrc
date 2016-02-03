@@ -47,6 +47,7 @@ NeoBundle 'https://github.com/ryanoasis/vim-devicons.git'
 NeoBundle 'https://github.com/briancollins/vim-jst.git'
 NeoBundle 'https://github.com/soramugi/auto-ctags.vim.git'
 NeoBundle 'https://github.com/elzr/vim-json.git'
+NeoBundle 'https://github.com/tpope/vim-rails.git'
 
 call neobundle#end()
 
