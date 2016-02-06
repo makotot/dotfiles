@@ -1,69 +1,53 @@
 set nocompatible
 filetype off
 
-if has('vim_starting')
-  set runtimepath+=~/.vim/bundle/neobundle.vim/
-endif
-
 if has('mac')
   let g:vimproc_dll_path = $VIMRUNTIME . '/autoload/vimproc_mac.so'
 endif
 
-
-"bundle
-call neobundle#begin(expand('~/.vim/bundle/'))
-
-NeoBundle 'https://github.com/Shougo/neobundle.vim.git'
-NeoBundle 'https://github.com/Shougo/unite.vim.git'
-NeoBundle 'https://github.com/Shougo/neocomplcache.git'
-NeoBundle 'https://github.com/Shougo/neosnippet.git'
-NeoBundle 'https://github.com/Shougo/neosnippet-snippets.git'
-NeoBundle 'https://github.com/Shougo/vimshell.git'
-NeoBundle 'https://github.com/Shougo/vimfiler.git'
-NeoBundle 'https://github.com/Shougo/vimproc.git'
-NeoBundle 'https://github.com/scrooloose/syntastic.git'
-NeoBundle 'https://github.com/pangloss/vim-javascript.git'
-NeoBundle 'https://github.com/othree/yajs.vim.git'
-NeoBundle 'https://github.com/scrooloose/nerdtree.git'
-NeoBundle 'https://github.com/jistr/vim-nerdtree-tabs.git'
-NeoBundle 'https://github.com/othree/html5.vim.git'
-NeoBundle 'https://github.com/itchyny/lightline.vim.git'
-NeoBundle 'https://github.com/tpope/vim-fugitive.git'
-NeoBundle 'https://github.com/mustache/vim-mustache-handlebars.git'
-NeoBundle 'https://github.com/cakebaker/scss-syntax.vim.git'
-NeoBundle 'https://github.com/othree/javascript-libraries-syntax.vim.git'
-NeoBundle 'https://github.com/marijnh/tern_for_vim.git'
-NeoBundle 'https://github.com/maksimr/vim-jsbeautify.git'
-NeoBundle 'https://github.com/editorconfig/editorconfig-vim.git'
-NeoBundle 'https://github.com/Yggdroot/indentLine.git'
-NeoBundle 'https://github.com/lilydjwg/colorizer.git'
-NeoBundle 'https://github.com/tmhedberg/matchit.git'
-NeoBundle 'https://github.com/docunext/closetag.vim.git'
-NeoBundle 'https://github.com/glidenote/memolist.vim.git'
-NeoBundle 'https://github.com/mxw/vim-jsx.git'
-NeoBundle 'https://github.com/chriskempson/base16-vim.git'
-NeoBundle 'https://github.com/shime/vim-livedown.git'
-NeoBundle 'https://github.com/ryanoasis/vim-devicons.git'
-NeoBundle 'https://github.com/briancollins/vim-jst.git'
-NeoBundle 'https://github.com/soramugi/auto-ctags.vim.git'
-NeoBundle 'https://github.com/elzr/vim-json.git'
-NeoBundle 'https://github.com/tpope/vim-rails.git'
-
-call neobundle#end()
+" vim-plug
+call plug#begin('~/.vim/plugged')
+Plug 'https://github.com/Shougo/unite.vim.git'
+Plug 'https://github.com/Shougo/neocomplcache.git'
+Plug 'https://github.com/Shougo/neosnippet.git'
+Plug 'https://github.com/Shougo/neosnippet-snippets.git'
+Plug 'https://github.com/Shougo/vimshell.git'
+Plug 'https://github.com/Shougo/vimfiler.git'
+Plug 'https://github.com/Shougo/vimproc.git'
+Plug 'https://github.com/scrooloose/syntastic.git'
+Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'https://github.com/othree/yajs.vim.git'
+Plug 'https://github.com/scrooloose/nerdtree.git'
+Plug 'https://github.com/jistr/vim-nerdtree-tabs.git'
+Plug 'https://github.com/othree/html5.vim.git'
+Plug 'https://github.com/itchyny/lightline.vim.git'
+Plug 'https://github.com/tpope/vim-fugitive.git'
+Plug 'https://github.com/mustache/vim-mustache-handlebars.git'
+Plug 'https://github.com/cakebaker/scss-syntax.vim.git'
+Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
+Plug 'https://github.com/marijnh/tern_for_vim.git'
+Plug 'https://github.com/maksimr/vim-jsbeautify.git'
+Plug 'https://github.com/editorconfig/editorconfig-vim.git'
+Plug 'https://github.com/Yggdroot/indentLine.git'
+Plug 'https://github.com/lilydjwg/colorizer.git'
+Plug 'https://github.com/tmhedberg/matchit.git'
+Plug 'https://github.com/docunext/closetag.vim.git'
+Plug 'https://github.com/glidenote/memolist.vim.git'
+Plug 'https://github.com/mxw/vim-jsx.git'
+Plug 'https://github.com/chriskempson/base16-vim.git'
+Plug 'https://github.com/shime/vim-livedown.git'
+Plug 'https://github.com/ryanoasis/vim-devicons.git'
+Plug 'https://github.com/briancollins/vim-jst.git'
+Plug 'https://github.com/soramugi/auto-ctags.vim.git'
+Plug 'https://github.com/elzr/vim-json.git'
+Plug 'https://github.com/tpope/vim-rails.git'
+call plug#end()
 
 filetype plugin indent on
 
 
-"check bundle
-if neobundle#exists_not_installed_bundles()
-  echomsg 'Not installed bundles:' . string(neobundle#get_not_installed_bundle_names())
-  echomsg 'Please execute "NeoBundleInstall"'
-endif
-
 if has('gui_macvim')
   set showtabline=2
-  "	set guifont=Monaco:h9
-  "set guifont=Ricty:h11
   set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
   set transparency=4
 endif
