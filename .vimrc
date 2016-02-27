@@ -41,7 +41,11 @@ Plug 'https://github.com/briancollins/vim-jst.git'
 Plug 'https://github.com/soramugi/auto-ctags.vim.git'
 Plug 'https://github.com/elzr/vim-json.git'
 Plug 'https://github.com/tpope/vim-rails.git'
+Plug 'https://github.com/zenorocha/dracula-theme.git'
 call plug#end()
+
+syntax enable
+colorscheme dracula
 
 filetype plugin indent on
 
@@ -63,27 +67,36 @@ if has('gui_running')
   au GUIEnter * set fullscreen
 endif
 
-"show line number
 set number
-
-" listchars
 set list
 set listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%
-
-hi NonText guibg=NONE guifg=IndianRed3
-hi SpecialKey guibg=NONE guifg=Gray23
-
-" undofile
 set noundofile
-
-" encode
 set encoding=utf-8
 set fileencodings=utf8,cp932,sjis,euc-jp
-
-"chabge Cursor color
 set guicursor=n-v-c:block-Cursor
 set guicursor+=i:ver100-iCursor
 set guicursor+=i:blinkwait10
+set hlsearch
+set nobackup
+set noswapfile
+set iminsert=0
+set imsearch=0
+set modifiable
+set write
+set noexpandtab
+set showcmd
+set cmdheight=1
+set showmatch
+set hidden
+set ruler
+set title
+set clipboard=unnamed
+set cryptmethod=blowfish
+set background=dark
+
+
+hi NonText guibg=NONE guifg=IndianRed3
+hi SpecialKey guibg=NONE guifg=Gray23
 
 "json conceal
 let g:vim_json_syntax_conceal = 0
@@ -98,43 +111,12 @@ augroup END
 au   BufEnter *   execute ":lcd " . expand("%:p:h")
 
 "search highlight
-set hlsearch
 
 "ノーマルモードの<C-^>を無効化
 nnoremap <silent> <C-^> <Nop>
 
-"no backup swp
-set nobackup
-set noswapfile
-
-"ime
-set iminsert=0
-set imsearch=0
-
-set modifiable
-set write
-
-set noexpandtab
-
-set showcmd
-set cmdheight=1
-
-set showmatch
-
-"バッファ関連
-"編集中でもバッファを切り替えれるようにしておく
-set hidden
-
-"ルーラーを表示
-set ruler
-set title
-
 " highlightサーチをEsc2回で消去
 nnoremap <Esc><Esc> :nohlsearch<CR>
-
-" copy & paste
-set clipboard=unnamed
-
 
 command!
       \	-bar -nargs=1 -complete=customlist,s:coding_style_complete
@@ -201,7 +183,6 @@ autocmd FileType html,hbs,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
-
 " unite.vim
 "unite prefix key.
 nnoremap [unite] <Nop>
@@ -251,14 +232,11 @@ function! s:unite_my_settings()"{{{
   inoremap <silent> <buffer> <expr> <C-o> unite#do_action('open')
 endfunction"}}}
 
-
 "vimfiler
 let g:vimfiler_as_default_explorer = 1
 
-
 "css color
 let g:cssColorVimDoNotMessMyUpdatetime = 1
-
 
 " nerdtree
 autocmd vimenter * NERDTree
@@ -270,18 +248,15 @@ autocmd BufRead,BufNewFile *.md  setfiletype mkd
 
 autocmd BufNewFile,BufRead *.css,*.less set filetype=css
 
-
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
+imap <C-k> <Plug>(neosnippet_expand_or_jump)
+smap <C-k> <Plug>(neosnippet_expand_or_jump)
+xmap <C-k> <Plug>(neosnippet_expand_target)
 
 " For snippet_complete marker.
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
 
 augroup MyXML
   autocmd!
@@ -289,33 +264,23 @@ augroup MyXML
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
-
-" less
-au BufNewFile,BufRead *.less			setf less
-
-
 " sass
-au! BufRead,BufNewFile *.sass         setfiletype sass
+au! BufRead,BufNewFile *.sass setfiletype sass
 
 " mustache
 let g:mustache_abbreviations = 1
 
-" crypt
-set cryptmethod=blowfish
-
 " js lib syntax
 let g:used_javascript_libs = 'underscore, backbone, angularjs, requirejs, jquery, react'
-
 
 " tern_for_vim
 let g:tern_map_keys=1
 let tern#is_show_argument_hints_enabled = 1
 let g:tern_show_argument_hints='on_hold'
 
-
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'wombat',
+      \ 'colorscheme': 'dracula',
       \ 'mode_map': {'c': 'NORMAL'},
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
@@ -406,13 +371,11 @@ let g:syntastic_mode_map = {
       \ "passive_filetypes": ["html", "scss"]
       \ }
 
-
 "beautify
 map <c-f> :call JsBeautify()<cr>
 
 " easymotion
 let g:EasyMotion_use_upper = 1
-
 
 " memolist
 let g:memolist_memo_suffix = "md"
@@ -422,13 +385,6 @@ let g:memolist_unite = 1
 let g:auto_ctags_directory_list = ['.git']
 set tags+=.git/tags
 
-
-" color scheme
-colorscheme base16-ocean
-
-" syntax highlighting
-set background=dark     " you can use `dark` or `light` as your background
-syntax on
 
 " highlight CursorLine
 set cursorline
