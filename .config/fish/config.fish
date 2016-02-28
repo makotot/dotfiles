@@ -1,10 +1,4 @@
-# Path to Oh My Fish install.
-#set -gx OMF_PATH /Users/makototateno/.local/share/omf
-
 set TERM xterm-256color
-
-# Customize Oh My Fish configuration path.
-#set -gx OMF_CONFIG /Users/makototateno/.config/omf
 
 # rbenv
 set PATH "$HOME/.rbenv/shims" $PATH
@@ -23,11 +17,14 @@ function rbenv
     end
 end
 
-# Load oh-my-fish configuration.
-#source $OMF_PATH/init.fish
-#set fisher_home ~/.local/share/fisherman
-#set fisher_config ~/.config/fisherman
-#source $fisher_home/config.fish
+set -x GOPATH $HOME/.go
+set -x PATH $PATH /usr/local/go/bin $GOPATH/bin
+
+function cd
+  builtin cd $argv
+  ls -la
+end
+
 set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
 source $fisher_home/config.fish
