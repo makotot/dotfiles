@@ -1,10 +1,12 @@
-set shell=bash
 set nocompatible
-filetype off
 
-if has('mac')
-  let g:vimproc_dll_path = $VIMRUNTIME . '/autoload/vimproc_mac.so'
-endif
+set shell=bash
+set t_Co=16
+set background=dark
+syntax on
+colorscheme dracula
+
+filetype off
 
 " vim-plug
 call plug#begin('~/.vim/plugged')
@@ -44,9 +46,6 @@ Plug 'https://github.com/elzr/vim-json.git'
 Plug 'https://github.com/tpope/vim-rails.git'
 Plug 'https://github.com/zenorocha/dracula-theme.git'
 call plug#end()
-
-syntax enable
-colorscheme dracula
 
 filetype plugin indent on
 
@@ -93,7 +92,8 @@ set ruler
 set title
 set clipboard=unnamed
 set cryptmethod=blowfish
-set background=dark
+set incsearch
+set ignorecase smartcase
 
 
 hi NonText guibg=NONE guifg=IndianRed3
