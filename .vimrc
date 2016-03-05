@@ -369,7 +369,7 @@ let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_mode_map = {
       \ "mode": "active",
       \ "active_filetypes": ["ruby", "python", "javascript", "css"],
-      \ "passive_filetypes": ["html", "scss"]
+      \ "passive_filetypes": ["html", "scss", "php"]
       \ }
 
 "beautify
