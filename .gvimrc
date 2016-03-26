@@ -20,9 +20,6 @@ source $VIMRUNTIME/menu.vim
 set guioptions-=T
 set guioptions-=m
 
-" color scheme
-colorscheme base16-ocean
-
 " syntax highlighting
 set background=dark     " you can use `dark` or `light` as your background
 syntax on
