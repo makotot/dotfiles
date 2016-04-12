@@ -45,6 +45,8 @@ Plug 'https://github.com/soramugi/auto-ctags.vim.git'
 Plug 'https://github.com/elzr/vim-json.git'
 Plug 'https://github.com/tpope/vim-rails.git'
 Plug 'https://github.com/zenorocha/dracula-theme.git'
+Plug 'https://github.com/kchmck/vim-coffee-script.git'
+
 call plug#end()
 
 filetype plugin indent on
