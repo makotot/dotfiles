@@ -27,4 +27,7 @@ end
 
 set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
+
+fish_vi_mode
+
 source $fisher_home/config.fish
