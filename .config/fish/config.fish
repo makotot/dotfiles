@@ -1,5 +1,7 @@
 set TERM xterm-256color
 
+set -x EDITOR vim
+
 # rbenv
 set PATH "$HOME/.rbenv/shims" $PATH
 rbenv rehash ^/dev/null
