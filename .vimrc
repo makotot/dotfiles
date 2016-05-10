@@ -47,6 +47,7 @@ Plug 'https://github.com/tpope/vim-rails.git'
 Plug 'https://github.com/zenorocha/dracula-theme.git'
 Plug 'https://github.com/kchmck/vim-coffee-script.git'
 Plug 'https://github.com/slim-template/vim-slim.git'
+Plug 'https://github.com/tpope/vim-endwise.git'
 
 call plug#end()
 
@@ -138,7 +139,7 @@ autocmd FileType xhtml :compiler tidy
 autocmd FileType xhtml :setlocal makeprg=tidy\ -raw\ -quiet\ -errors\ --gnu-emacs\ yes\ \"%\" 
 
 " CSS tidy
-"autocmd FileType css :compiler css
+autocmd FileType css :compiler css
 
 "plugin key-mappings
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
@@ -366,14 +367,15 @@ endfunction
 "syntastic 
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
-let g:syntastic_javascript_checkers=['eslint']
-let g:syntastic_css_checkers = ['csslint']
-let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_mode_map = {
       \ "mode": "active",
       \ "active_filetypes": ["ruby", "python", "javascript", "css"],
       \ "passive_filetypes": ["html", "scss", "php"]
       \ }
+let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_css_checkers = ['csslint']
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_ruby_checkers = ['rubocop']
 
 "beautify
 map <c-f> :call JsBeautify()<cr>
