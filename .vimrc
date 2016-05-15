@@ -39,7 +39,7 @@ Plug 'https://github.com/glidenote/memolist.vim.git'
 Plug 'https://github.com/mxw/vim-jsx.git'
 Plug 'https://github.com/chriskempson/base16-vim.git'
 Plug 'https://github.com/shime/vim-livedown.git'
-Plug 'https://github.com/ryanoasis/vim-devicons.git'
+"Plug 'https://github.com/ryanoasis/vim-devicons.git'
 Plug 'https://github.com/briancollins/vim-jst.git'
 Plug 'https://github.com/soramugi/auto-ctags.vim.git'
 Plug 'https://github.com/elzr/vim-json.git'
@@ -52,10 +52,10 @@ call plug#end()
 
 filetype plugin indent on
 
-
 if has('gui_macvim')
   set showtabline=2
-  set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
+  "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
+  set guifont=SourceCodePro-Light:h10
   set transparency=4
 endif
 
@@ -338,11 +338,12 @@ function! MyFugitive()
 endfunction
 
 function! MyFiletype()
-  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+  "return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' . WebDevIconsGetFileTypeSymbol() : 'no ft') : ''
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' : 'no ft') : ''
 endfunction
 
 function! MyFileformat()
-  return winwidth(0) > 70 ? (&fileformat . ' ' . WebDevIconsGetFileFormatSymbol()) : ''
+  return winwidth(0) > 70 ? (&fileformat . ' ') : ''
 endfunction
 
 function! MyFileencoding()
@@ -390,16 +391,14 @@ let g:memolist_unite = 1
 let g:auto_ctags_directory_list = ['.git']
 set tags+=.git/tags
 
-
 " highlight CursorLine
 set cursorline
-hi CursorLine term=bold cterm=bold guibg=gray25
+hi CursorLine term=bold cterm=bold guibg=gray30
 highlight Cursor guifg=white guibg=SpringGreen3
 highlight iCursor guifg=white guibg=LawnGreen
 hi Search guibg=LawnGreen guifg=SkyBlue2
 
 hi NonText guibg=NONE guifg=IndianRed3
 hi SpecialKey guibg=NONE guifg=Gray23
-
 
 cd $HOME
