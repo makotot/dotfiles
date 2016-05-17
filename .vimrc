@@ -39,7 +39,6 @@ Plug 'https://github.com/glidenote/memolist.vim.git'
 Plug 'https://github.com/mxw/vim-jsx.git'
 Plug 'https://github.com/chriskempson/base16-vim.git'
 Plug 'https://github.com/shime/vim-livedown.git'
-"Plug 'https://github.com/ryanoasis/vim-devicons.git'
 Plug 'https://github.com/briancollins/vim-jst.git'
 Plug 'https://github.com/soramugi/auto-ctags.vim.git'
 Plug 'https://github.com/elzr/vim-json.git'
@@ -54,7 +53,6 @@ filetype plugin indent on
 
 if has('gui_macvim')
   set showtabline=2
-  "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
   set guifont=SourceCodePro-Light:h10
   set transparency=4
 endif
