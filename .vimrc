@@ -371,6 +371,7 @@ let g:syntastic_mode_map = {
       \ "passive_filetypes": ["html", "scss", "php"]
       \ }
 let g:syntastic_javascript_checkers = ['eslint']
+let g:syntastic_coffee_checkers = ['coffeelint']
 let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_ruby_checkers = ['rubocop']
