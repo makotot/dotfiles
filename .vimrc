@@ -46,6 +46,7 @@ Plug 'https://github.com/tpope/vim-rails.git'
 Plug 'https://github.com/zenorocha/dracula-theme.git'
 Plug 'https://github.com/kchmck/vim-coffee-script.git'
 Plug 'https://github.com/slim-template/vim-slim.git'
+Plug 'https://github.com/fatih/vim-go.git'
 
 call plug#end()
 
@@ -399,5 +400,13 @@ hi Search guibg=LawnGreen guifg=SkyBlue2
 
 hi NonText guibg=NONE guifg=IndianRed3
 hi SpecialKey guibg=NONE guifg=Gray23
+
+" golang
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_interfaces = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
 
 cd $HOME
