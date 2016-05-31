@@ -47,6 +47,7 @@ Plug 'https://github.com/zenorocha/dracula-theme.git'
 Plug 'https://github.com/kchmck/vim-coffee-script.git'
 Plug 'https://github.com/slim-template/vim-slim.git'
 Plug 'https://github.com/fatih/vim-go.git'
+Plug 'https://github.com/rking/ag.vim.git'
 
 call plug#end()
 
