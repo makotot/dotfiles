@@ -25,5 +25,9 @@
   br = branch
 [push]
   default = matching
-[url "https://"]
-  insteadOf = git://
+[ghq]
+  root = ~/
+[url "git://"]
+  insteadOf = https://
+[mergetool]
+  keepBackup = false
