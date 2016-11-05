@@ -48,6 +48,8 @@ Plug 'https://github.com/kchmck/vim-coffee-script.git'
 Plug 'https://github.com/slim-template/vim-slim.git'
 Plug 'https://github.com/fatih/vim-go.git'
 Plug 'https://github.com/majutsushi/tagbar.git'
+Plug 'https://github.com/xolox/vim-misc.git'
+Plug 'https://github.com/xolox/vim-easytags.git'
 
 call plug#end()
 
@@ -392,5 +394,9 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
 nnoremap <leader>t :TagbarToggle<cr>
+
+if has("path_extra")
+  set tags+=tags;
+endif
 
 cd $HOME
