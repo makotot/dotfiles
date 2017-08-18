@@ -1,10 +1,9 @@
 set nocompatible
 
 set shell=bash
-set t_Co=16
+set t_Co=256
 set background=dark
 syntax on
-colorscheme dracula
 
 filetype off
 
@@ -20,8 +19,6 @@ Plug 'https://github.com/Shougo/vimproc.git'
 Plug 'https://github.com/scrooloose/syntastic.git'
 Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'https://github.com/othree/yajs.vim.git'
-Plug 'https://github.com/scrooloose/nerdtree.git'
-Plug 'https://github.com/jistr/vim-nerdtree-tabs.git'
 Plug 'https://github.com/othree/html5.vim.git'
 Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
@@ -43,13 +40,11 @@ Plug 'https://github.com/briancollins/vim-jst.git'
 Plug 'https://github.com/soramugi/auto-ctags.vim.git'
 Plug 'https://github.com/elzr/vim-json.git'
 Plug 'https://github.com/tpope/vim-rails.git'
-Plug 'https://github.com/zenorocha/dracula-theme.git'
+Plug 'https://github.com/dikiaap/minimalist'
 Plug 'https://github.com/kchmck/vim-coffee-script.git'
 Plug 'https://github.com/slim-template/vim-slim.git'
 Plug 'https://github.com/fatih/vim-go.git'
-Plug 'https://github.com/majutsushi/tagbar.git'
-Plug 'https://github.com/xolox/vim-misc.git'
-Plug 'https://github.com/xolox/vim-easytags.git'
+Plug 'https://github.com/rking/ag.vim.git'
 
 call plug#end()
 
@@ -100,6 +95,10 @@ set cryptmethod=blowfish
 set incsearch
 set ignorecase smartcase
 
+
+hi NonText guibg=NONE guifg=IndianRed3
+hi SpecialKey guibg=NONE guifg=Gray23
+
 "json conceal
 let g:vim_json_syntax_conceal = 0
 
@@ -111,6 +110,8 @@ augroup InsertHook
 augroup END
 
 au   BufEnter *   execute ":lcd " . expand("%:p:h")
+
+"search highlight
 
 "ノーマルモードの<C-^>を無効化
 nnoremap <silent> <C-^> <Nop>
@@ -127,6 +128,11 @@ function! s:coding_style_complete(...) "{{{
   return keys(s:coding_styles)
 endfunction "}}}
 
+" HTML Tidy
+autocmd FileType html :compiler tidy
+autocmd FileType html :setlocal makeprg=tidy\ -raw\ -quiet\ -errors\ --gnu-emacs\ yes\ \"%\" 
+autocmd FileType xhtml :compiler tidy
+autocmd FileType xhtml :setlocal makeprg=tidy\ -raw\ -quiet\ -errors\ --gnu-emacs\ yes\ \"%\" 
 
 " CSS tidy
 autocmd FileType css :compiler css
@@ -146,15 +152,23 @@ let g:neocomplcache_enable_auto_select = 1
 "" search with camel case like Eclipse
 let g:neocomplcache_enable_camel_case_completion = 1
 let g:neocomplcache_enable_underbar_completion = 1
+"imap <C-k> <Plug>(neocomplcache_snippets_expand)
+"smap <C-k> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-g> neocomplcache#undo_completion()
 inoremap <expr><C-l> neocomplcache#complete_common_string()
+"" SuperTab like snippets behavior.
+"imap <expr><TAB> neocomplcache#sources#snippets_complete#expandable() ? "\<Plug>(neocomplcache_snippets_expand)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+"" <CR>: close popup and save indent.
+"inoremap <expr><CR> neocomplcache#smart_close_popup() . (&indentexpr != '' ? "\<C-f>\<CR>X\<BS>":"\<CR>")
 inoremap <expr><CR> pumvisible() ? neocomplcache#close_popup() : "\<CR>"
+"" <TAB>: completion.
 inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+"" <C-h>, <BS>: close popup and delete backword char.
 inoremap <expr><C-h> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><BS> neocomplcache#smart_close_popup() . "\<C-h>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
-
+"dictionary
 " js / including node
 let g:neocomplcache_dictionary_filetype_lists = {
       \ 'default' : '',
@@ -165,7 +179,7 @@ let g:neocomplcache_dictionary_filetype_lists = {
 
 "enable omni
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
-autocmd FileType html,hbs,markdown,ejs setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType html,hbs,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 "autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
@@ -221,13 +235,10 @@ endfunction"}}}
 
 "vimfiler
 let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_ignore_pattern = '^\%(.git\|.DS_Store\)$'
 
 "css color
 let g:cssColorVimDoNotMessMyUpdatetime = 1
-
-" nerdtree
-autocmd vimenter * NERDTree
-let g:NERDTreeShowHidden = 1
 
 "markdown
 autocmd BufRead,BufNewFile *.mkd  setfiletype mkd
@@ -244,12 +255,12 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-"
-"augroup MyXML
-"  autocmd!
-"  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
-"  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
-"augroup END
+
+augroup MyXML
+  autocmd!
+  autocmd Filetype xml inoremap <buffer> </ </<C-x><C-o>
+  autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
+augroup END
 
 " sass
 au! BufRead,BufNewFile *.sass setfiletype sass
@@ -267,7 +278,7 @@ let g:tern_show_argument_hints='on_hold'
 
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'dracula',
+      \ 'colorscheme': 'minimalist',
       \ 'mode_map': {'c': 'NORMAL'},
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
@@ -393,10 +404,13 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
-nnoremap <leader>t :TagbarToggle<cr>
+let g:netrw_hide = 1
 
-if has("path_extra")
-  set tags+=tags;
-endif
+let scheme = 'minimalist'
+augroup guicolorscheme
+  autocmd!
+  execute 'autocmd GUIEnter * colorscheme' scheme
+augroup END
+execute 'colorscheme' scheme
 
 cd $HOME
