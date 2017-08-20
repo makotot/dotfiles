@@ -17,33 +17,32 @@ Plug 'https://github.com/Shougo/vimshell.git'
 Plug 'https://github.com/Shougo/vimfiler.git'
 Plug 'https://github.com/Shougo/vimproc.git'
 Plug 'https://github.com/scrooloose/syntastic.git'
-Plug 'https://github.com/pangloss/vim-javascript.git'
-Plug 'https://github.com/othree/yajs.vim.git'
-Plug 'https://github.com/othree/html5.vim.git'
+"Plug 'https://github.com/pangloss/vim-javascript.git'
+"Plug 'https://github.com/othree/yajs.vim.git'
+"Plug 'https://github.com/othree/html5.vim.git'
 Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/mustache/vim-mustache-handlebars.git'
-Plug 'https://github.com/cakebaker/scss-syntax.vim.git'
-Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
-Plug 'https://github.com/marijnh/tern_for_vim.git'
-Plug 'https://github.com/maksimr/vim-jsbeautify.git'
+"Plug 'https://github.com/mustache/vim-mustache-handlebars.git'
+"Plug 'https://github.com/cakebaker/scss-syntax.vim.git'
+"Plug 'https://github.com/othree/javascript-libraries-syntax.vim.git'
+"Plug 'https://github.com/marijnh/tern_for_vim.git'
+"Plug 'https://github.com/maksimr/vim-jsbeautify.git'
 Plug 'https://github.com/editorconfig/editorconfig-vim.git'
 Plug 'https://github.com/Yggdroot/indentLine.git'
 Plug 'https://github.com/lilydjwg/colorizer.git'
 Plug 'https://github.com/tmhedberg/matchit.git'
 Plug 'https://github.com/docunext/closetag.vim.git'
 Plug 'https://github.com/glidenote/memolist.vim.git'
-Plug 'https://github.com/mxw/vim-jsx.git'
-Plug 'https://github.com/chriskempson/base16-vim.git'
-Plug 'https://github.com/shime/vim-livedown.git'
-Plug 'https://github.com/briancollins/vim-jst.git'
-Plug 'https://github.com/soramugi/auto-ctags.vim.git'
+"Plug 'https://github.com/mxw/vim-jsx.git'
+"Plug 'https://github.com/shime/vim-livedown.git'
+"Plug 'https://github.com/briancollins/vim-jst.git'
+"Plug 'https://github.com/soramugi/auto-ctags.vim.git'
 Plug 'https://github.com/elzr/vim-json.git'
 Plug 'https://github.com/tpope/vim-rails.git'
-Plug 'https://github.com/dikiaap/minimalist'
-Plug 'https://github.com/kchmck/vim-coffee-script.git'
-Plug 'https://github.com/slim-template/vim-slim.git'
-Plug 'https://github.com/fatih/vim-go.git'
+Plug 'https://github.com/colepeters/spacemacs-theme.vim.git'
+"Plug 'https://github.com/kchmck/vim-coffee-script.git'
+"Plug 'https://github.com/slim-template/vim-slim.git'
+"Plug 'https://github.com/fatih/vim-go.git'
 Plug 'https://github.com/rking/ag.vim.git'
 
 call plug#end()
@@ -91,10 +90,10 @@ set hidden
 set ruler
 set title
 set clipboard=unnamed
-set cryptmethod=blowfish
+" set cryptmethod=blowfish
 set incsearch
 set ignorecase smartcase
-
+set laststatus=2
 
 hi NonText guibg=NONE guifg=IndianRed3
 hi SpecialKey guibg=NONE guifg=Gray23
@@ -111,8 +110,6 @@ augroup END
 
 au   BufEnter *   execute ":lcd " . expand("%:p:h")
 
-"search highlight
-
 "ノーマルモードの<C-^>を無効化
 nnoremap <silent> <C-^> <Nop>
 
@@ -127,15 +124,6 @@ command!
 function! s:coding_style_complete(...) "{{{
   return keys(s:coding_styles)
 endfunction "}}}
-
-" HTML Tidy
-autocmd FileType html :compiler tidy
-autocmd FileType html :setlocal makeprg=tidy\ -raw\ -quiet\ -errors\ --gnu-emacs\ yes\ \"%\" 
-autocmd FileType xhtml :compiler tidy
-autocmd FileType xhtml :setlocal makeprg=tidy\ -raw\ -quiet\ -errors\ --gnu-emacs\ yes\ \"%\" 
-
-" CSS tidy
-autocmd FileType css :compiler css
 
 "plugin key-mappings
 imap <C-k>     <Plug>(neocomplcache_snippets_expand)
@@ -234,7 +222,7 @@ function! s:unite_my_settings()"{{{
 endfunction"}}}
 
 "vimfiler
-let g:vimfiler_as_default_explorer = 1
+"let g:vimfiler_as_default_explorer = 1
 let g:vimfiler_ignore_pattern = '^\%(.git\|.DS_Store\)$'
 
 "css color
@@ -262,23 +250,9 @@ augroup MyXML
   autocmd Filetype html inoremap <buffer> </ </<C-x><C-o>
 augroup END
 
-" sass
-au! BufRead,BufNewFile *.sass setfiletype sass
-
-" mustache
-let g:mustache_abbreviations = 1
-
-" js lib syntax
-let g:used_javascript_libs = 'underscore, backbone, angularjs, requirejs, jquery, react'
-
-" tern_for_vim
-let g:tern_map_keys=1
-let tern#is_show_argument_hints_enabled = 1
-let g:tern_show_argument_hints='on_hold'
-
 " lightline
 let g:lightline = {
-      \ 'colorscheme': 'minimalist',
+      \ 'colorscheme': 'Dracula',
       \ 'mode_map': {'c': 'NORMAL'},
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ], [ 'fugitive', 'filename' ] ],
@@ -372,19 +346,12 @@ let g:syntastic_css_checkers = ['csslint']
 let g:syntastic_python_checkers = ['pylint']
 let g:syntastic_ruby_checkers = ['rubocop']
 
-"beautify
-map <c-f> :call JsBeautify()<cr>
-
 " easymotion
 let g:EasyMotion_use_upper = 1
 
 " memolist
 let g:memolist_memo_suffix = "md"
 let g:memolist_unite = 1
-
-" ctags
-let g:auto_ctags_directory_list = ['.git']
-set tags+=.git/tags
 
 " highlight CursorLine
 set cursorline
@@ -396,21 +363,12 @@ hi Search guibg=LawnGreen guifg=SkyBlue2
 hi NonText guibg=NONE guifg=IndianRed3
 hi SpecialKey guibg=NONE guifg=Gray23
 
-" golang
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_interfaces = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-
 let g:netrw_hide = 1
 
-let scheme = 'minimalist'
-augroup guicolorscheme
-  autocmd!
-  execute 'autocmd GUIEnter * colorscheme' scheme
-augroup END
-execute 'colorscheme' scheme
+if (has("termguicolors"))
+  set termguicolors
+endif
+set background=dark
+colorscheme spacemacs-theme
 
 cd $HOME
