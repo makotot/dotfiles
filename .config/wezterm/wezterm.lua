@@ -25,4 +25,39 @@ return {
   use_fancy_tab_bar = true,
   use_ime = true,
   window_background_opacity = 1.0,
+
+  keys = {
+    {
+      key = "LeftArrow",
+      mods = "ALT",
+      action = wezterm.action.SplitPane{
+        direction = "Left",
+        size = { Percent = 50 },
+      },
+    },
+    {
+      key = "RightArrow",
+      mods = "ALT",
+      action = wezterm.action.SplitPane{
+        direction = "Right",
+        size = { Percent = 50 },
+      },
+    },
+    {
+      key = "UpArrow",
+      mods = "ALT",
+      action = wezterm.action.SplitPane{
+        direction = "Up",
+        size = { Percent = 50 },
+      },
+    },
+    {
+      key = "DownArrow",
+      mods = "ALT",
+      action = wezterm.action.SplitPane{
+        direction = "Down",
+        size = { Percent = 50 },
+      },
+    },
+  }
 }
