@@ -28,8 +28,28 @@ return {
 
   keys = {
     {
+      key = 'LeftArrow',
+      mods = 'CMD',
+      action = wezterm.action.ActivatePaneDirection 'Left',
+    },
+    {
+      key = 'RightArrow',
+      mods = 'CMD',
+      action = wezterm.action.ActivatePaneDirection 'Right',
+    },
+    {
+      key = 'UpArrow',
+      mods = 'CMD',
+      action = wezterm.action.ActivatePaneDirection 'Up',
+    },
+    {
+      key = 'DownArrow',
+      mods = 'CMD',
+      action = wezterm.action.ActivatePaneDirection 'Down',
+    },
+    {
       key = "LeftArrow",
-      mods = "ALT",
+      mods = "OPT",
       action = wezterm.action.SplitPane{
         direction = "Left",
         size = { Percent = 50 },
@@ -37,7 +57,7 @@ return {
     },
     {
       key = "RightArrow",
-      mods = "ALT",
+      mods = "OPT",
       action = wezterm.action.SplitPane{
         direction = "Right",
         size = { Percent = 50 },
@@ -45,7 +65,7 @@ return {
     },
     {
       key = "UpArrow",
-      mods = "ALT",
+      mods = "OPT",
       action = wezterm.action.SplitPane{
         direction = "Up",
         size = { Percent = 50 },
@@ -53,7 +73,7 @@ return {
     },
     {
       key = "DownArrow",
-      mods = "ALT",
+      mods = "OPT",
       action = wezterm.action.SplitPane{
         direction = "Down",
         size = { Percent = 50 },
