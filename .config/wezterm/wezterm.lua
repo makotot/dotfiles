@@ -6,14 +6,32 @@ wezterm.on("gui-startup", function(cmd)
   window:gui_window():maximize()
 end)
 
-wezterm.on('format-tab-title', function(tab)
-  local pane = tab.active_pane
-  local title = pane.title
-  if pane.domain_name then
-    title = title .. ' - (' .. pane.domain_name .. ')'
+local function format_title(dir, max_width)
+  local width = max_width - 2
+  local dir_char_length = #dir
+
+  if width < dir_char_length then
+    return '..' .. wezterm.truncate_left(dir, width) .. ' '
   end
-  return title
-end)
+  return ' ' .. dir .. ' '
+end
+
+wezterm.on(
+  'format-tab-title',
+  function(tab, tabs, panes, config, hover, max_width)
+    local title = format_title(tab.active_pane.current_working_dir, max_width)
+
+    if tab.is_active then
+      return {
+        { Background = { Color = '#523ef5' } },
+        { Foreground = { Color = '#fff' } },
+        { Text = title },
+      }
+    end
+
+    return title
+  end
+)
 
 return {
   automatically_reload_config = true,
@@ -25,6 +43,10 @@ return {
   use_fancy_tab_bar = true,
   use_ime = true,
   window_background_opacity = 1.0,
+  inactive_pane_hsb = {
+    saturation = 0.6,
+    brightness = 0.7,
+  },
 
   keys = {
     {
