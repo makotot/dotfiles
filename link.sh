@@ -10,3 +10,4 @@ ln -sfv $(pwd)/.config/ghostty ~/.config/ghostty
 ln -sfv $(pwd)/.config/zellij ~/.config/zellij
 ln -sfv $(pwd)/.config/helix ~/.config/helix
 ln -sfv $(pwd)/.config/starship.toml ~/.config/starship.toml
+ln -sfv $(pwd)/.config/nvim ~/.config/nvim
