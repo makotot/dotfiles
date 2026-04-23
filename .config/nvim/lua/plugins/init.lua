@@ -31,5 +31,21 @@ return {
         vim.keymap.set("n", "<leader>fg", builtin.live_grep)   -- 内容のgrep検索
         vim.keymap.set("n", "<leader>fb", builtin.buffers)     -- 開いてるバッファ
       end,
+  },
+  {
+    "mikavilpas/yazi.nvim",
+    version = "*", -- use the latest stable version
+    event = "VeryLazy",
+    dependencies = {
+      { "nvim-lua/plenary.nvim", lazy = true },
+    },
+    keys = {
+    -- 👇 in this section, choose your own keymappings!
+      {
+        -- Open in the current working directory
+        "<leader>cw",
+        desc = "Open the file manager in nvim's working directory",
+      },
+    },
   }
 }
