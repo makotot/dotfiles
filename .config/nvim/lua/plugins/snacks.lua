@@ -36,6 +36,9 @@ return {
     },
     git = { enabled = true },
     gitblame = { enabled = true },
+    image = { 
+      enabled = true,
+    },
     indent = { enabled = true },
     notifier = { enabled = true },
     picker = {
